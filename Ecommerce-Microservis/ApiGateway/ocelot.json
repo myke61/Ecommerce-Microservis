@@ -1,0 +1,38 @@
+{
+  "GlobalConfiguration": {
+    "BaseURL": "https://localhost:3000"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/account",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamPathTemplate": "/account",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7165
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 4
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/weather",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/weather",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7092
+        }
+      ]
+    }
+  ]
+}
