@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "pL1C5oTLP+4=",
+  "success": true,
+  "projectFilePath": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Presentation\\Product.API\\Product.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Myke\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\Myke\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
