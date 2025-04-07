@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\identityserver\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 508,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,45 +50,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Program.cs",
-              "RelativeDocumentMoniker": "IdentityServer\\Program.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Program.cs",
-              "RelativeToolTip": "IdentityServer\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAswBwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T20:03:09.822Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SeedData.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\SeedData.cs",
-              "RelativeDocumentMoniker": "IdentityServer\\SeedData.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\SeedData.cs",
-              "RelativeToolTip": "IdentityServer\\SeedData.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAswCYAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T19:55:18.233Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Config.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Config.cs",
-              "RelativeDocumentMoniker": "IdentityServer\\Config.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Config.cs",
-              "RelativeToolTip": "IdentityServer\\Config.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T19:55:10.285Z",
-              "EditorCaption": ""
             }
           ]
         },
