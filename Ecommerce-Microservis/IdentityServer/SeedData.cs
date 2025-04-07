@@ -10,44 +10,57 @@ namespace IdentityServer;
 
 public class SeedData
 {
-    public static void EnsureSeedData(WebApplication app)
+    public static async void EnsureSeedData(WebApplication app)
     {
         using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
 
-            var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            var alice = userMgr.FindByNameAsync("alice").Result;
-            if (alice == null)
+            RoleManager<IdentityRole> roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var adminRole = roleMgr.FindByNameAsync("admin").Result;
+            var userRole = roleMgr.FindByNameAsync("user").Result;
+            if (adminRole == null)
             {
-                alice = new ApplicationUser
+                roleMgr.CreateAsync(new IdentityRole("Admin")).Wait();
+            }
+            if (userRole == null)
+            {
+                roleMgr.CreateAsync(new IdentityRole("User")).Wait();
+            }
+
+            var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var mikail = userMgr.FindByNameAsync("Mikail").Result;
+            if (mikail == null)
+            {
+                mikail = new ApplicationUser
                 {
-                    UserName = "alice",
-                    Email = "AliceSmith@example.com",
+                    UserName = "Mikail",
+                    Email = "mikailagirman61@gmail.com",
                     EmailConfirmed = true,
                 };
-                var result = userMgr.CreateAsync(alice, "Pass123$").Result;
+                var result = userMgr.CreateAsync(mikail, "Pass123$").Result;
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
 
-                result = userMgr.AddClaimsAsync(alice, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Alice"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.WebSite, "http://alice.example.com"),
-                        }).Result;
+                result = userMgr.AddClaimsAsync(mikail, [
+                            new(JwtClaimTypes.Name, "Mikail Aðýrman"),
+                            new(JwtClaimTypes.GivenName, "Mikail"),
+                            new(JwtClaimTypes.FamilyName, "Aðýrman"),
+                            new(JwtClaimTypes.Address, "Turkey"),
+                        ]).Result;
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
-                Log.Debug("alice created");
+                result = userMgr.AddToRoleAsync(mikail, "admin").Result;
+                Log.Debug("Mikail Created");
             }
             else
             {
-                Log.Debug("alice already exists");
+                Log.Debug("Mikail Already Exist");
             }
 
             var bob = userMgr.FindByNameAsync("bob").Result;
@@ -65,17 +78,17 @@ public class SeedData
                     throw new Exception(result.Errors.First().Description);
                 }
 
-                result = userMgr.AddClaimsAsync(bob, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Bob"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.WebSite, "http://bob.example.com"),
-                            new Claim("location", "somewhere")
-                        }).Result;
+                result = userMgr.AddClaimsAsync(bob, [
+                            new(JwtClaimTypes.Name, "Bob Smith"),
+                            new(JwtClaimTypes.GivenName, "Bob"),
+                            new(JwtClaimTypes.FamilyName, "Smith"),
+                            new("location", "Russia")
+                        ]).Result;
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
+                result = userMgr.AddToRoleAsync(bob, "user").Result;
                 Log.Debug("bob created");
             }
             else

@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5749967B-30F1-45BE-A056-5D26391FE61D}|Services\\Product\\Presentation\\Product.API\\Product.API.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\services\\product\\presentation\\product.api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5749967B-30F1-45BE-A056-5D26391FE61D}|Services\\Product\\Presentation\\Product.API\\Product.API.csproj|solutionrelative:services\\product\\presentation\\product.api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\identityserver\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\services\\product\\core\\product.application\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|solutionrelative:services\\product\\core\\product.application\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\services\\product\\core\\product.application\\responses\\getproductbyid\\getproductbyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|solutionrelative:services\\product\\core\\product.application\\responses\\getproductbyid\\getproductbyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\services\\product\\core\\product.application\\features\\queries\\getproductbyid\\getproductbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|solutionrelative:services\\product\\core\\product.application\\features\\queries\\getproductbyid\\getproductbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\services\\product\\core\\product.application\\features\\queries\\getproductbyid\\getproductbyidextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|solutionrelative:services\\product\\core\\product.application\\features\\queries\\getproductbyid\\getproductbyidextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\services\\product\\core\\product.application\\mapper\\generalmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{082A153E-1A1A-4134-B244-13883A158C84}|Services\\Product\\Core\\Product.Application\\Product.Application.csproj|solutionrelative:services\\product\\core\\product.application\\mapper\\generalmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|d:\\repos\\ecommerce-microservis\\ecommerce-microservis\\identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF5BEFDA-28AE-7603-040D-593562AC6BD5}|IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,36 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 508,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 11,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Presentation\\Product.API\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Presentation\\Product.API\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Presentation\\Product.API\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Services\\Product\\Presentation\\Product.API\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAQwD4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:49:36.101Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ServiceRegistration.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\ServiceRegistration.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Core\\Product.Application\\ServiceRegistration.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\ServiceRegistration.cs",
-              "RelativeToolTip": "Services\\Product\\Core\\Product.Application\\ServiceRegistration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:50:21.382Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -106,54 +66,41 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Program.cs",
+              "RelativeDocumentMoniker": "IdentityServer\\Program.cs",
+              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Program.cs",
+              "RelativeToolTip": "IdentityServer\\Program.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAswBwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T20:03:09.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\SeedData.cs",
+              "RelativeDocumentMoniker": "IdentityServer\\SeedData.cs",
+              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\SeedData.cs",
+              "RelativeToolTip": "IdentityServer\\SeedData.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAYwBcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T19:55:18.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GetProductByIdResponse.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Responses\\GetProductById\\GetProductByIdResponse.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Core\\Product.Application\\Responses\\GetProductById\\GetProductByIdResponse.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Responses\\GetProductById\\GetProductByIdResponse.cs",
-              "RelativeToolTip": "Services\\Product\\Core\\Product.Application\\Responses\\GetProductById\\GetProductByIdResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Title": "Config.cs",
+              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Config.cs",
+              "RelativeDocumentMoniker": "IdentityServer\\Config.cs",
+              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\IdentityServer\\Config.cs",
+              "RelativeToolTip": "IdentityServer\\Config.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:59:11.083Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetProductByIdExtension.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdExtension.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdExtension.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdExtension.cs",
-              "RelativeToolTip": "Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdExtension.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:54:48.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GeneralMapper.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Mapper\\GeneralMapper.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Core\\Product.Application\\Mapper\\GeneralMapper.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Mapper\\GeneralMapper.cs",
-              "RelativeToolTip": "Services\\Product\\Core\\Product.Application\\Mapper\\GeneralMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:52:05.773Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GetProductByIdQueryHandler.cs",
-              "DocumentMoniker": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdQueryHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdQueryHandler.cs",
-              "ToolTip": "D:\\Repos\\Ecommerce-Microservis\\Ecommerce-Microservis\\Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdQueryHandler.cs",
-              "RelativeToolTip": "Services\\Product\\Core\\Product.Application\\Features\\Queries\\GetProductById\\GetProductByIdQueryHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:49:36.109Z",
+              "WhenOpened": "2025-04-07T19:55:10.285Z",
               "EditorCaption": ""
             }
           ]

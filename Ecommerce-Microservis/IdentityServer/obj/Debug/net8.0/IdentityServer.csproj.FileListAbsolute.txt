@@ -194,7 +194,6 @@ D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\ne
 D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.IdentityServer.props
 D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.IdentityServer.props
 D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\Identity.FDBE6C83.Up2Date
 D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\IdentityServer.dll
 D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\IdentityServer\obj\Debug\net8.0\refint\IdentityServer.dll
