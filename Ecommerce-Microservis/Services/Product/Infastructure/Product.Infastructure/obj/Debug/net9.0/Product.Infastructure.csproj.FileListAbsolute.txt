@@ -1,0 +1,12 @@
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\bin\Debug\net9.0\Product.Infastructure.deps.json
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\bin\Debug\net9.0\Product.Infastructure.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\bin\Debug\net9.0\Product.Infastructure.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.AssemblyInfoInputs.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.AssemblyInfo.cs
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.csproj.CoreCompileInputs.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.sourcelink.json
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\refint\Product.Infastructure.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\Product.Infastructure.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Infastructure\Product.Infastructure\obj\Debug\net9.0\ref\Product.Infastructure.dll

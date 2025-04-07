@@ -1,0 +1,16 @@
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\bin\Debug\net9.0\Product.Domain.deps.json
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\bin\Debug\net9.0\Product.Domain.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\bin\Debug\net9.0\Product.Domain.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\bin\Debug\net9.0\Ecommerce.Base.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\bin\Debug\net9.0\Ecommerce.Base.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.csproj.AssemblyReference.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.AssemblyInfoInputs.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.AssemblyInfo.cs
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.csproj.CoreCompileInputs.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.sourcelink.json
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product..66AFAF57.Up2Date
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\refint\Product.Domain.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\Product.Domain.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\Product\Core\Product.Domain\obj\Debug\net9.0\ref\Product.Domain.dll

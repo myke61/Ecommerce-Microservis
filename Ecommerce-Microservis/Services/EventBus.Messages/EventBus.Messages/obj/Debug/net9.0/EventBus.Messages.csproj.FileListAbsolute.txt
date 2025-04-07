@@ -1,0 +1,12 @@
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\bin\Debug\net9.0\EventBus.Messages.deps.json
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\bin\Debug\net9.0\EventBus.Messages.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\bin\Debug\net9.0\EventBus.Messages.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.AssemblyInfoInputs.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.AssemblyInfo.cs
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.csproj.CoreCompileInputs.cache
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.sourcelink.json
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\refint\EventBus.Messages.dll
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\EventBus.Messages.pdb
+D:\Repos\Ecommerce-Microservis\Ecommerce-Microservis\Services\EventBus.Messages\EventBus.Messages\obj\Debug\net9.0\ref\EventBus.Messages.dll
