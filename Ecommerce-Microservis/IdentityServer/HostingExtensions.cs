@@ -31,8 +31,10 @@ internal static class HostingExtensions
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
-            .AddAspNetIdentity<ApplicationUser>()
-            .AddLicenseSummary();
+            .AddInMemoryApiResources(Config.ApiResources)
+            .AddTestUsers(Config.GetUsers().ToList())
+            .AddAspNetIdentity<ApplicationUser>();
+            //.AddLicenseSummary();
 
         builder.Services.AddAuthentication()
             .AddGoogle(options =>
