@@ -1,10 +1,7 @@
 ﻿using Caching.Redis.Interface;
-using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Text.Json;

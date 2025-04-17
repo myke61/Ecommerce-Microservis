@@ -1,17 +1,14 @@
-﻿using Basket.API.DTOs.Product;
+﻿using Basket.API.Context;
+using Basket.API.DTOs.Product;
 using Basket.API.DTOs.Requests;
 using Basket.API.Entities;
-using Basket.API.RabbitMQ.Publisher.Interface;
-using Basket.API.RabbitMQ.Queues;
+using Basket.API.EventStore;
+using Basket.API.Outbox;
 using Basket.API.Services.LoginService;
 using Basket.API.Services.ProductService;
 using Caching.Redis.Interface;
-using Ecommerce.Base.Repositories.Interface;
-using EventStore.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using System.Text.Json;
 
 namespace Basket.API.Controllers
 {
@@ -24,14 +21,16 @@ namespace Basket.API.Controllers
         private readonly TimeSpan _cacheExpiry = TimeSpan.FromDays(2);
         private readonly ILoginService _loginService;
         private readonly IProductService _productService;
-        private readonly IRabbitMQPublisher _rabbitMQ;
+        private readonly IEventStoreHandler _eventStoreHandler;
+        private readonly BasketDbContext _dbContext;
 
-        public BasketController(IRedisCache cache, ILoginService loginService, IProductService productService, IRabbitMQPublisher rabbitMQ)
+        public BasketController(IRedisCache cache, ILoginService loginService, IProductService productService, IEventStoreHandler eventStoreHandler,BasketDbContext dbContext)
         {
             _cache = cache;
             _loginService = loginService;
             _productService = productService;
-            _rabbitMQ = rabbitMQ;
+            _eventStoreHandler = eventStoreHandler;
+            _dbContext = dbContext;
         }
 
         [HttpPost("AddItem")]
@@ -56,6 +55,7 @@ namespace Basket.API.Controllers
                 Newtonsoft.Json.JsonConvert.SerializeObject(basket),
                 _cacheExpiry
             );
+            _eventStoreHandler.AppendToStreamAsync(cacheKey, "ItemAdded", basket);
             return Ok("Item added to basket");
         }
 
@@ -76,6 +76,7 @@ namespace Basket.API.Controllers
                 Newtonsoft.Json.JsonConvert.SerializeObject(basket),
                 _cacheExpiry
             );
+            _eventStoreHandler.AppendToStreamAsync(cacheKey, "ItemRemoved", basket);
             return Ok("Item removed from basket");
         }
 
@@ -90,6 +91,7 @@ namespace Basket.API.Controllers
                 return NotFound("Basket not found");
             }
             _cache.RemoveAsync(cacheKey);
+            _eventStoreHandler.AppendToStreamAsync(cacheKey, "BasketDeleted", cachedResponse);
             return Ok("Basket deleted");
         }
 
@@ -140,7 +142,15 @@ namespace Basket.API.Controllers
                 }
             };
 
-            await _rabbitMQ.PublishMessageAsync(Newtonsoft.Json.JsonConvert.SerializeObject(checkout), RabbitMQQueues.OrderCreationQueue);
+            _dbContext.OutboxMessage.Add(new OutboxMessage
+            {
+                Id = Guid.NewGuid(),
+                Payload = Newtonsoft.Json.JsonConvert.SerializeObject(checkout),
+                Processed = false
+            });
+            await _dbContext.SaveChangesAsync();
+
+            _eventStoreHandler.AppendToStreamAsync(cacheKey, "BasketCheckout", checkout);
 
             _cache.RemoveAsync(cacheKey);
 

@@ -15,7 +15,7 @@ namespace Basket.API.RabbitMQ.Publisher
             _settings = rabbitMQSettings.Value;
         }
 
-        public async Task PublishMessageAsync(string message, string queueName)
+        public async Task PublishMessageAsync<T>(T message, string queueName)
         {
             var factory = new ConnectionFactory
             {

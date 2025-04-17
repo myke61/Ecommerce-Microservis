@@ -1,6 +1,11 @@
+using Order.Application;
+using Order.Infastructure.MassTransit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddApplicationServices();
+builder.Services.AddMassTransitWithRabbitMQ();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

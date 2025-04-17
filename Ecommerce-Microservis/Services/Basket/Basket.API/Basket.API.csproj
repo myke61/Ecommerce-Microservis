@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Caching.Redis\Caching.Redis.csproj" />
+    <ProjectReference Include="..\..\Base\Caching.Redis\Caching.Redis.csproj" />
     <ProjectReference Include="..\..\Base\Ecommerce.Base\Ecommerce.Base.csproj" />
   </ItemGroup>
 

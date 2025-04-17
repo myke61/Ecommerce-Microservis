@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Caching.Redis\Caching.Redis.csproj" />
+    <ProjectReference Include="..\..\..\Base\Caching.Redis\Caching.Redis.csproj" />
     <ProjectReference Include="..\..\Core\Product.Application\Product.Application.csproj" />
     <ProjectReference Include="..\..\Infastructure\Product.Persistence\Product.Persistence.csproj" />
   </ItemGroup>

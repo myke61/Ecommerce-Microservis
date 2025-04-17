@@ -27,7 +27,11 @@
             var existingItem = BasketItems.FirstOrDefault(x => x.ProductId == productId);
             if (existingItem != null)
             {
-                existingItem.DecreaseQuantity();
+                if(existingItem.Quantity == 1)
+                    BasketItems.Remove(existingItem);
+                else
+                    existingItem.DecreaseQuantity();
+
                 this.BasketAmount = this.BasketAmount - existingItem.UnitPrice;
             }
         }

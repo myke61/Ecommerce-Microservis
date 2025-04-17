@@ -1,3 +1,6 @@
+using Basket.API.Context;
+using Basket.API.EventStore;
+using Basket.API.Outbox;
 using Basket.API.RabbitMQ;
 using Basket.API.RabbitMQ.Publisher;
 using Basket.API.RabbitMQ.Publisher.Interface;
@@ -13,6 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<IProductService, ProductService>(u => u.BaseAddress =
               new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
+
+builder.Services.AddDbContext<BasketDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -34,14 +40,21 @@ builder.Services.AddAuthorizationBuilder()
     });
 
 builder.Services.Configure<RabbitMQSettings>(builder.Configuration.GetSection("RabbitMQ"));
-builder.Services.AddScoped<IRabbitMQPublisher, RabbitMQPublisher>();
-/*builder.Services.AddSingleton(
+builder.Services.AddSingleton<IRabbitMQPublisher, RabbitMQPublisher>();
+builder.Services.AddSingleton(
     new EventStoreClient(EventStoreClientSettings.Create(
-            "esdb://admin:changeit@localhost:2113?tls=false&tlsVerifyCert=false")));*/
+            "esdb://admin:changeit@localhost:2113?tls=false&tlsVerifyCert=false")));
 builder.Services.AddRedisCache();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IEventStoreHandler, EventStoreHandler>();
+builder.Services.AddHostedService<OutboxWorker>(provider =>
+{
+    var scopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
+    var rabbitMQPublisher = provider.GetRequiredService<IRabbitMQPublisher>();
+    return new OutboxWorker(scopeFactory, rabbitMQPublisher);
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
