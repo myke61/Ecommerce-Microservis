@@ -7,26 +7,6 @@ namespace IdentityServer;
 
 public static class Config
 {
-    public static IEnumerable<TestUser> GetUsers()
-    {
-        return new List<TestUser>()
-            {
-                new TestUser{ SubjectId="1",Username="fcakiroglu16",  Password="password",Claims= new List<Claim>(){
-                    new Claim("given_name","Fatih"),
-                    new Claim("family_name","Çakýroðlu"),
-                   new Claim("country","Türkiye"),
-                      new Claim("city","Ankara"),
-                      new Claim("role","admin")
-                } },
-                 new TestUser{ SubjectId="2",Username="ahmet16",  Password="password",Claims= new List<Claim>(){
-                new Claim("given_name","Ahmet"),
-                new Claim("family_name","Çakýroðlu"),
-                  new Claim("country","Türkiye"),
-                      new Claim("city","Ýstanbul"),
-                    new Claim("role","customer")
-                 } }
-            };
-    }
     public static IEnumerable<IdentityResource> IdentityResources =>
         new IdentityResource[]
         {

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
+using Product.API.Middleware;
 using Product.Application;
 using Product.Persistence;
 using System.Security.Claims;
@@ -33,8 +34,6 @@ builder.Services.AddAuthorizationBuilder()
     .AddPolicy("AdminPolicy", policy => policy.RequireClaim("Admin"));
 
 // Add services to the container.
-
-
 
 builder.Services.AddRedisCache();
 builder.Services.AddPersistenceServices();
@@ -101,6 +100,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<AdminMiddleware>();
 
 app.MapControllers();
 

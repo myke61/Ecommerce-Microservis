@@ -32,7 +32,6 @@ internal static class HostingExtensions
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
             .AddInMemoryApiResources(Config.ApiResources)
-            .AddTestUsers(Config.GetUsers().ToList())
             .AddAspNetIdentity<ApplicationUser>();
             //.AddLicenseSummary();
 

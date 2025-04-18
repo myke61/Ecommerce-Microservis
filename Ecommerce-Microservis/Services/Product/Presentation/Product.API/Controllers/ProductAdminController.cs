@@ -18,7 +18,7 @@ namespace Product.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "AdminPolicy")]
+    [Authorize]
     public class ProductAdminController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -41,10 +41,7 @@ namespace Product.API.Controllers
         [HttpPut("update/{productId}")]
         public async Task<IActionResult> UpdateProduct([FromRoute] Guid productId, UpdateProductRequest updateProductRequest)
         {
-            var user = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var userRole = User.FindFirstValue(ClaimTypes.Role);
             updateProductRequest.Id = productId;
-            //updateProductRequest.UserId = userId;
             var query = mapper.Map<UpdateProductRequest, UpdateProductCommand>(updateProductRequest);
             UpdateProductResponse response = await mediator.Send(query);
             return Ok(response);
