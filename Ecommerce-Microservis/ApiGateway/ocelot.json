@@ -1,17 +1,18 @@
 {
   "GlobalConfiguration": {
-    "BaseURL": "https://localhost:3000"
+    "BaseURL": "https://localhost:3030"
   },
   "Routes": [
     {
-      "UpstreamPathTemplate": "/gateway/account",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
-      "DownstreamPathTemplate": "/account",
+      //Product Service
+      "UpstreamPathTemplate": "/gateway/product/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamPathTemplate": "/api/product/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7165
+          "Port": 7056
         }
       ],
       "RateLimitOptions": {
@@ -22,17 +23,45 @@
         "Limit": 4
       }
     },
+    //Basket Service
     {
-      "UpstreamPathTemplate": "/gateway/weather",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/weather",
+      "UpstreamPathTemplate": "/gateway/basket/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamPathTemplate": "/api/basket/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7092
+          "Port": 7117
         }
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 4
+      }
+    },
+    //Order Service
+    {
+      "UpstreamPathTemplate": "/gateway/order/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamPathTemplate": "/api/order/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7093
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 4
+      }
     }
   ]
 }

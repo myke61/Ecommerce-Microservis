@@ -1,4 +1,5 @@
 using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+app.UseOcelot().Wait();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
