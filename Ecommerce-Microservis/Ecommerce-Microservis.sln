@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.API", "Services\Order
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching.Redis", "Services\Base\Caching.Redis\Caching.Redis.csproj", "{64F57F19-9AF8-4BCE-9250-CCD326F0C171}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Services\Base\Logging\Logging.csproj", "{7ECF24B0-DAF8-4CBB-A0C6-F12D9CFFE63D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{64F57F19-9AF8-4BCE-9250-CCD326F0C171}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64F57F19-9AF8-4BCE-9250-CCD326F0C171}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64F57F19-9AF8-4BCE-9250-CCD326F0C171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ECF24B0-DAF8-4CBB-A0C6-F12D9CFFE63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECF24B0-DAF8-4CBB-A0C6-F12D9CFFE63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECF24B0-DAF8-4CBB-A0C6-F12D9CFFE63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECF24B0-DAF8-4CBB-A0C6-F12D9CFFE63D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +155,7 @@ Global
 		{DE24BA94-8726-43C8-83DC-58C57FB17AE6} = {1F579743-E5BA-4F81-B871-B736895CCFA0}
 		{A090B76F-70C4-4CAA-B28C-6D6FFC3AB81B} = {35C0F19B-B5A3-4149-AF35-578706672B6C}
 		{64F57F19-9AF8-4BCE-9250-CCD326F0C171} = {9208900C-F4D9-4ABC-B977-82D05F4095C5}
+		{7ECF24B0-DAF8-4CBB-A0C6-F12D9CFFE63D} = {9208900C-F4D9-4ABC-B977-82D05F4095C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {72D2BAC1-ABF0-48F4-B9A6-C239DEF1A44D}

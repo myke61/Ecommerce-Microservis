@@ -9,6 +9,7 @@ using Basket.API.Services.ProductService;
 using Caching.Redis;
 using Ecommerce.Base;
 using EventStore.Client;
+using Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
@@ -56,11 +57,14 @@ builder.Services.AddHostedService<OutboxWorker>(provider =>
     return new OutboxWorker(scopeFactory, rabbitMQPublisher);
 });
 
+builder.Services.AddElasticLogging(builder.Configuration);
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+app.UseElasticRequestLogging();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
