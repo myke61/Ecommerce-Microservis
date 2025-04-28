@@ -1,12 +1,14 @@
 ﻿using Basket.API.Context;
+using Basket.API.DTOs.Payment;
 using Basket.API.DTOs.Product;
 using Basket.API.DTOs.Requests;
 using Basket.API.Entities;
-using Basket.API.EventStore;
 using Basket.API.Outbox;
 using Basket.API.Services.LoginService;
+using Basket.API.Services.PaymentService;
 using Basket.API.Services.ProductService;
 using Caching.Redis.Interface;
+using EventStore.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,14 +25,16 @@ namespace Basket.API.Controllers
         private readonly IProductService _productService;
         private readonly IEventStoreHandler _eventStoreHandler;
         private readonly BasketDbContext _dbContext;
+        private readonly IPaymentService _paymentService;
 
-        public BasketController(IRedisCache cache, ILoginService loginService, IProductService productService, IEventStoreHandler eventStoreHandler,BasketDbContext dbContext)
+        public BasketController(IRedisCache cache, ILoginService loginService, IProductService productService, IEventStoreHandler eventStoreHandler,BasketDbContext dbContext,IPaymentService paymentService)
         {
             _cache = cache;
             _loginService = loginService;
             _productService = productService;
             _eventStoreHandler = eventStoreHandler;
             _dbContext = dbContext;
+            _paymentService = paymentService;
         }
 
         [HttpPost("AddItem")]
@@ -141,6 +145,20 @@ namespace Basket.API.Controllers
                     CVC = checkoutDTO.CVC
                 }
             };
+            var paymentRequest = new PaymentRequest
+            {
+                CardNumber = checkout.CardInformation.CardNumber,
+                CardHolder = checkout.CardInformation.CardHolderName,
+                ExpirationDate = checkout.CardInformation.ExpirationDate,
+                CVV = checkout.CardInformation.CVC,
+                Amount = checkout.TotalPrice,
+                UserId = checkout.UserId
+            };
+            var paymentResponse = await _paymentService.ProcessPayment(paymentRequest);
+            if (!paymentResponse.IsSuccess)
+            {
+                return BadRequest("Payment failed");
+            }
 
             _dbContext.OutboxMessage.Add(new OutboxMessage
             {

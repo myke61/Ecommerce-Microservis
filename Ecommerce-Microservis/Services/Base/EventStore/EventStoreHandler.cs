@@ -1,9 +1,8 @@
-﻿
-using Basket.API.Entities;
+﻿using EventStore.Interface;
 using EventStore.Client;
 using System.Text.Json;
 
-namespace Basket.API.EventStore
+namespace EventStore
 {
     public class EventStoreHandler : IEventStoreHandler
     {
@@ -12,18 +11,18 @@ namespace Basket.API.EventStore
         {
             _storeClient = storeClient;
         }
-        public void AppendToStreamAsync<T>(string streamName,string type ,T data, CancellationToken cancellationToken = default) where T : class
+        public void AppendToStreamAsync<T>(string streamName, string type, T data, CancellationToken cancellationToken = default) where T : class
         {
             var eventData = new EventData(
                 Uuid.NewUuid(),
                 type,
                 JsonSerializer.SerializeToUtf8Bytes(data)
             );
-             _storeClient.AppendToStreamAsync(
-                streamName,
-                StreamState.Any,
-                [eventData]
-            );
+            _storeClient.AppendToStreamAsync(
+               streamName,
+               StreamState.Any,
+               [eventData]
+           );
         }
     }
 }

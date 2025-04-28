@@ -1,4 +1,10 @@
-﻿namespace Basket.API.EventStore
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EventStore.Interface
 {
     public interface IEventStoreHandler
     {

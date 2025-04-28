@@ -1,13 +1,14 @@
 using Basket.API.Context;
-using Basket.API.EventStore;
 using Basket.API.Outbox;
 using Basket.API.RabbitMQ;
 using Basket.API.RabbitMQ.Publisher;
 using Basket.API.RabbitMQ.Publisher.Interface;
 using Basket.API.Services.LoginService;
+using Basket.API.Services.PaymentService;
 using Basket.API.Services.ProductService;
 using Caching.Redis;
 using Ecommerce.Base;
+using EventStore;
 using EventStore.Client;
 using Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,6 +18,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<IProductService, ProductService>(u => u.BaseAddress =
               new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
+
+builder.Services.AddHttpClient<IPaymentService,PaymentService>(p => p.BaseAddress =
+              new Uri(builder.Configuration["ServiceUrls:PaymentAPI"]));
 
 builder.Services.AddDbContext<BasketDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
@@ -49,7 +53,7 @@ builder.Services.AddRedisCache();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();
-builder.Services.AddScoped<IEventStoreHandler, EventStoreHandler>();
+builder.Services.AddEventStore();
 builder.Services.AddHostedService<OutboxWorker>(provider =>
 {
     var scopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
