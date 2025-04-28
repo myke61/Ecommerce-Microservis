@@ -31,6 +31,11 @@ public static class Config
         {
             Scopes = { "basketApi" },
             UserClaims = { "role" } // role claim'ini access token'a yansýtmak için bu þart
+        },
+        new ApiResource("orderApiResource", "Order API Resource")
+        {
+            Scopes = { "orderApi" },
+            UserClaims = { "role" } // role claim'ini access token'a yansýtmak için bu þart
         }
     };
     public static IEnumerable<ApiScope> ApiScopes =>
@@ -38,6 +43,7 @@ public static class Config
         {
             new ApiScope("productApi","Product API",["role"]),
             new ApiScope("basketApi","Basket API",["role"]),
+            new ApiScope("orderApi","Order API",["role"]),
         };
 
 
@@ -87,6 +93,7 @@ public static class Config
                     IdentityServerConstants.StandardScopes.Email,
                     "productApi",
                     "basketApi",
+                    "orderApi",
                     "roles"
                 },
                 AllowAccessTokensViaBrowser =true,

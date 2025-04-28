@@ -7,14 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Base\Caching.Redis\Caching.Redis.csproj" />
     <ProjectReference Include="..\..\Base\Ecommerce.Base\Ecommerce.Base.csproj" />
     <ProjectReference Include="..\Order.Application\Order.Application.csproj" />
     <ProjectReference Include="..\Order.Infastructure\Order.Infastructure.csproj" />

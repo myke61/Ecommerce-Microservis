@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Order.Application.Features.Command.CreateOrder;
+using Order.Application.Features.Queries.GetOrders;
+using Order.Application.Requests.GetOrders;
 
 namespace Order.Application.Mapper
 {
@@ -7,7 +9,7 @@ namespace Order.Application.Mapper
     {
         public GeneralMapper()
         {
-            //CreateMap<CreateOrderCommand, CreateOrderCommand>().ReverseMap();
+            CreateMap<GetOrdersRequest, GetOrdersQuery>().ReverseMap();
         }
     }
 }
