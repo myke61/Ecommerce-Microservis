@@ -81,21 +81,6 @@ docker run --name some-postgres \
   Her servisin yalnızca kendi yetkili endpointlerine erişimi sağlanır.
 
 
-📁 Proje Yapısı (Örnek)
-/src
-  /Services
-    /Basket
-    /Order
-    /Product
-    /FakePayment
-  /BuildingBlocks
-    /EventBus
-    /Shared
-    /Identity
-/docker-compose.yml
-/README.md
-
-
 ✅ Başlarken
   Docker servislerini çalıştırın.
   Her servisi https://localhost:[PORT] adresinden kontrol edin.
