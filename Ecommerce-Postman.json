@@ -1,0 +1,682 @@
+{
+    "info": {
+        "name": "My Project",
+        "description": "",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Ecommerce-Apis",
+            "description": "",
+            "item": [
+                {
+                    "name": "Identity Server",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Identity Server",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "oauth2",
+                                    "oauth2": [
+                                        {
+                                            "key": "addTokenTo",
+                                            "value": "header",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "tokenDetail",
+                                            "value": "{\"refresh_token\":\"\",\"id_token\":\"\",\"access_token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ1MDE0NDAyLCJpYXQiOjE3NDUwMTQ0MDIsImV4cCI6MTc0NTAxODAwMiwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiLCJyb2xlcyJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6IkFwaURvZyIsInN1YiI6IjcwNjZlMDU3LWVlZGYtNGM5ZC1hNjQzLTlmMDdhZjJjMWZmYSIsImF1dGhfdGltZSI6MTc0NTAxNDQwMiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiIwNzhEQjMyMjU3RUJCNjAzN0ZEOEU4NTA4MzMzOTM4NSJ9.F6lx5TcTTvwMOOopx3pRYewZ5R6wAHzGU0ozO0Zs0uoh29sFRVgFIW92U9z253a0nKpwI_gdaLCURu4_EwLZ8xp051KKtTOfRhSLeuK9XLYNMJKgR9yDMhjzugFWkQZonh2rdCY7h5xVhYpU6nAWw3eBkVVoBsucwvLV4yOnhbFK9IVZcMYMYFZ0nXNZLImPxLLUnuts_2gRZjxmItGVMC9TgMaCvP7ekHq6IEFH04ICahUNGHVb5FAIWfW8NoJzXx3Tv8RuXZIj_hdjdazjzf0kkcQqNEOmdp8rIv57s2ZNGOdx08iINpxvmxtLJuFAmZ_-MwrNGZurcPOz0_IK9w\",\"token_type\":\"Bearer\",\"scope\":\"basketApi openid roles\",\"expires_in\":3600,\"timestamp\":1745014402}",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "accessToken",
+                                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ1MDE0NDAyLCJpYXQiOjE3NDUwMTQ0MDIsImV4cCI6MTc0NTAxODAwMiwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiLCJyb2xlcyJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6IkFwaURvZyIsInN1YiI6IjcwNjZlMDU3LWVlZGYtNGM5ZC1hNjQzLTlmMDdhZjJjMWZmYSIsImF1dGhfdGltZSI6MTc0NTAxNDQwMiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiIwNzhEQjMyMjU3RUJCNjAzN0ZEOEU4NTA4MzMzOTM4NSJ9.F6lx5TcTTvwMOOopx3pRYewZ5R6wAHzGU0ozO0Zs0uoh29sFRVgFIW92U9z253a0nKpwI_gdaLCURu4_EwLZ8xp051KKtTOfRhSLeuK9XLYNMJKgR9yDMhjzugFWkQZonh2rdCY7h5xVhYpU6nAWw3eBkVVoBsucwvLV4yOnhbFK9IVZcMYMYFZ0nXNZLImPxLLUnuts_2gRZjxmItGVMC9TgMaCvP7ekHq6IEFH04ICahUNGHVb5FAIWfW8NoJzXx3Tv8RuXZIj_hdjdazjzf0kkcQqNEOmdp8rIv57s2ZNGOdx08iINpxvmxtLJuFAmZ_-MwrNGZurcPOz0_IK9w",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "useTokenType",
+                                            "value": "access_token",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "grant_type",
+                                            "value": "password_credentials",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "accessTokenUrl",
+                                            "value": "https://localhost:5001/connect/token",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "clientId",
+                                            "value": "ApiDog",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "clientSecret",
+                                            "value": "secret",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "username",
+                                            "value": "Mikail",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "Pass123$",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "challengeAlgorithm",
+                                            "value": "S256",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "scope",
+                                            "value": "openid basketApi roles",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "state",
+                                            "value": "productApi",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "client_authentication",
+                                            "value": "header",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "useTokenConfigAsRefreshTokenConfig",
+                                            "value": true,
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "queryParamKey",
+                                            "value": "access_token",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "headerPrefix",
+                                            "value": "Bearer",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "body": {},
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:5001/connect/token",
+                                    "path": [
+                                        "connect",
+                                        "token"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "5001",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        }
+                    ],
+                    "auth": {}
+                },
+                {
+                    "name": "Basket Service",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Add Item To Basket",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ1MDE0NDAyLCJpYXQiOjE3NDUwMTQ0MDIsImV4cCI6MTc0NTAxODAwMiwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiLCJyb2xlcyJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6IkFwaURvZyIsInN1YiI6IjcwNjZlMDU3LWVlZGYtNGM5ZC1hNjQzLTlmMDdhZjJjMWZmYSIsImF1dGhfdGltZSI6MTc0NTAxNDQwMiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiIwNzhEQjMyMjU3RUJCNjAzN0ZEOEU4NTA4MzMzOTM4NSJ9.F6lx5TcTTvwMOOopx3pRYewZ5R6wAHzGU0ozO0Zs0uoh29sFRVgFIW92U9z253a0nKpwI_gdaLCURu4_EwLZ8xp051KKtTOfRhSLeuK9XLYNMJKgR9yDMhjzugFWkQZonh2rdCY7h5xVhYpU6nAWw3eBkVVoBsucwvLV4yOnhbFK9IVZcMYMYFZ0nXNZLImPxLLUnuts_2gRZjxmItGVMC9TgMaCvP7ekHq6IEFH04ICahUNGHVb5FAIWfW8NoJzXx3Tv8RuXZIj_hdjdazjzf0kkcQqNEOmdp8rIv57s2ZNGOdx08iINpxvmxtLJuFAmZ_-MwrNGZurcPOz0_IK9w",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw"
+                                },
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/basket/AddItem",
+                                    "path": [
+                                        "gateway",
+                                        "basket",
+                                        "AddItem"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        },
+                        {
+                            "name": "Get Basket",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ0NzA4NTkxLCJpYXQiOjE3NDQ3MDg1OTEsImV4cCI6MTc0NDcxMjE5MSwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJBcGlEb2ciLCJzdWIiOiI3MDY2ZTA1Ny1lZWRmLTRjOWQtYTY0My05ZjA3YWYyYzFmZmEiLCJhdXRoX3RpbWUiOjE3NDQ3MDg1OTEsImlkcCI6ImxvY2FsIiwicm9sZSI6IkFkbWluIiwianRpIjoiMDE4NkFBOENDN0I2NDVCRERDOTM2Rjk3MjNGMUZERTIifQ.ZRzX5VXgrUZ1SUEHq2mCmrZFLD-DAtzE5c-R8uSYzXFjczLtQ8tiDWgjU9B8Q7SNq01_0HA5bBfbDM6spzW-lyYObUs4SZf4eVLc4KDD4HZhfQbjV0dPNBJbKajfW2v_VcqUVi0VHczwXiTpTelFAxkTgUcwz-IAWvWOM7jWqc6YT-3K1K4akFyobXhIwzhZda9QITFWnD7UjH4azSeVjVKNQi1y0hN4SQgX9UnVTSDqxq3i2BK0kCWwcAxvAtHbXxfy1uE77B8McCNyPhip1v-J2Mf1GMU0s5hckUmdjILUu_4sfmiiCpIzNgD0CT9-VCVAkYSdQLGaroUgC-6D6Q",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "body": {},
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/basket/GetBasket",
+                                    "path": [
+                                        "gateway",
+                                        "basket",
+                                        "GetBasket"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        },
+                        {
+                            "name": "Remove Item From Basket",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ0NzE0OTkwLCJpYXQiOjE3NDQ3MTQ5OTAsImV4cCI6MTc0NDcxODU5MCwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJBcGlEb2ciLCJzdWIiOiI3MDY2ZTA1Ny1lZWRmLTRjOWQtYTY0My05ZjA3YWYyYzFmZmEiLCJhdXRoX3RpbWUiOjE3NDQ3MTQ5ODksImlkcCI6ImxvY2FsIiwicm9sZSI6IkFkbWluIiwianRpIjoiRUYzMzlGNDc1QTM0RkJDOTcwNUFENjFFQzU5MzlDOEYifQ.PdNe9njbNpXV74PtibKrmPaWUfz36gqVHM424zLZFm0H9PdKzPKTlfXS6CzmgpAw51VefKmgxG7MlEy29BUQXqt1WkYYj-aCE7gRlJbS7EBAmnQIy94EKAJCArPfeddq72IO2-iWZYcBc0V_-UAU0WjQjG-e0UjpEfme2MM2uYrfDKkC8XQNzBfi_lz9N5W7QbF4ux-ZUUHHXyQdvt6-_gySBi5EP8DBThzuWMtIkdV6_5Nhp-Kw6UPapV7ANNsIwUZpMt5micKp-yEdkCI_Qt8FTCNQfhR_MXtEXsJOh0jGECUKxYLPEsldnrqlbaCpeXwxdph22IrrFc1XHRq1fg",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw"
+                                },
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/basket/RemoveItem",
+                                    "path": [
+                                        "gateway",
+                                        "basket",
+                                        "RemoveItem"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        },
+                        {
+                            "name": "Checkout Basket",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ0NzE5MDM0LCJpYXQiOjE3NDQ3MTkwMzQsImV4cCI6MTc0NDcyMjYzNCwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJBcGlEb2ciLCJzdWIiOiI3MDY2ZTA1Ny1lZWRmLTRjOWQtYTY0My05ZjA3YWYyYzFmZmEiLCJhdXRoX3RpbWUiOjE3NDQ3MTkwMzQsImlkcCI6ImxvY2FsIiwicm9sZSI6IkFkbWluIiwianRpIjoiMDExMTFFQTZFQjQxODEwN0I0Q0M1NUE3ODE5MTVCQUIifQ.tyUw8BWpJfT3XfzZaK_m-FaM4unKmeV8pknbWTjXApmf5zxbrU5kyWfpZ8Nasd9yCwG_y3ptSxydI1-PltkNjZ5M9IOgbETb7UKLTx_9Q4XrSSJ_OX02mxxr2vH9o9aueMOcDaByljzxVD5XmZ4fzaYTCv5h680PWDaXvlDPD56HYyf9aoAMQPZ5DRlibZdmNjw8jBJJ2CURV1zXYLjH1hKt2LpM5Vs8HVW7tfKkfgkmAhiD9G_dWedzXqavRSD2k8_aU9KadjPVK51naPYUOChhPJpAzytJFLk-Ys_9taj1WYn-Mr6pgoSTy1RzCPW3Zo8Z-_Bgo2bT4JovHD7E6w",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw"
+                                },
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/basket/Checkout",
+                                    "path": [
+                                        "gateway",
+                                        "basket",
+                                        "Checkout"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        }
+                    ],
+                    "auth": {}
+                },
+                {
+                    "name": "Order Service",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get Orders",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ1MDE0NDAyLCJpYXQiOjE3NDUwMTQ0MDIsImV4cCI6MTc0NTAxODAwMiwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiLCJyb2xlcyJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6IkFwaURvZyIsInN1YiI6IjcwNjZlMDU3LWVlZGYtNGM5ZC1hNjQzLTlmMDdhZjJjMWZmYSIsImF1dGhfdGltZSI6MTc0NTAxNDQwMiwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiIwNzhEQjMyMjU3RUJCNjAzN0ZEOEU4NTA4MzMzOTM4NSJ9.F6lx5TcTTvwMOOopx3pRYewZ5R6wAHzGU0ozO0Zs0uoh29sFRVgFIW92U9z253a0nKpwI_gdaLCURu4_EwLZ8xp051KKtTOfRhSLeuK9XLYNMJKgR9yDMhjzugFWkQZonh2rdCY7h5xVhYpU6nAWw3eBkVVoBsucwvLV4yOnhbFK9IVZcMYMYFZ0nXNZLImPxLLUnuts_2gRZjxmItGVMC9TgMaCvP7ekHq6IEFH04ICahUNGHVb5FAIWfW8NoJzXx3Tv8RuXZIj_hdjdazjzf0kkcQqNEOmdp8rIv57s2ZNGOdx08iINpxvmxtLJuFAmZ_-MwrNGZurcPOz0_IK9w",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "body": {},
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/order",
+                                    "path": [
+                                        "gateway",
+                                        "order"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        }
+                    ],
+                    "auth": {}
+                },
+                {
+                    "name": "Product Service",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Admin",
+                            "description": "",
+                            "item": [
+                                {
+                                    "name": "Create Product",
+                                    "description": "",
+                                    "event": [],
+                                    "auth": {},
+                                    "request": {
+                                        "auth": {
+                                            "type": "bearer",
+                                            "bearer": [
+                                                {
+                                                    "key": "token",
+                                                    "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ0OTY4NTgyLCJpYXQiOjE3NDQ5Njg1ODIsImV4cCI6MTc0NDk3MjE4MiwiYXVkIjoiYmFza2V0QXBpUmVzb3VyY2UiLCJzY29wZSI6WyJiYXNrZXRBcGkiLCJvcGVuaWQiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJBcGlEb2ciLCJzdWIiOiI3MDY2ZTA1Ny1lZWRmLTRjOWQtYTY0My05ZjA3YWYyYzFmZmEiLCJhdXRoX3RpbWUiOjE3NDQ5Njg1ODIsImlkcCI6ImxvY2FsIiwicm9sZSI6IkFkbWluIiwianRpIjoiQTZDOEY2RDRCRkI4MEE5RTc5REIxMTQ4MTEwQUVCMDcifQ.Bncmi04feUMbzq6cw1xvb_xg1W6foHGBDD4nKRGvHV_6DLIqC96xzfSbNKrbUZsjhvWg6nQUa0ECXXYd2uvvr-d23IIxyfK3HdtmlsntXjdwwebBJfI2zbBwbSOK_6A_WCPXRswFw5uthgGUq4sGuLv1LUxlLVofzPgJ0zWX_AJNMwxKrV7CKFzoTztHvJ0jLqb0v_2Mv_5o2f9usII3dLx-gEWntuPBHX7aRWNOA1zt606iqYd9mZKX0TinmLnEjNnXa5b41Kz8U6itDSNNoX_RukeOFbN6TlYJhuGyS5IuSPRip20Hwkp2VnNO2u9dK7EaxU-GwRgm9v_aBXcLMA",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw"
+                                        },
+                                        "header": [],
+                                        "url": {
+                                            "raw": "https://localhost:7056/api/productAdmin/create",
+                                            "path": [
+                                                "api",
+                                                "productAdmin",
+                                                "create"
+                                            ],
+                                            "host": [
+                                                "localhost"
+                                            ],
+                                            "protocol": "https",
+                                            "port": "7056",
+                                            "query": [],
+                                            "variable": []
+                                        }
+                                    },
+                                    "response": [],
+                                    "protocolProfileBehavior": {
+                                        "strictSSL": false,
+                                        "followRedirects": true
+                                    }
+                                },
+                                {
+                                    "name": "Update Product By Id",
+                                    "description": "",
+                                    "event": [],
+                                    "auth": {},
+                                    "request": {
+                                        "auth": {
+                                            "type": "bearer",
+                                            "bearer": [
+                                                {
+                                                    "key": "token",
+                                                    "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE2NDA1RjcwNTI1RjAxOTlDMkVBRTUwN0U3QTVBRUQxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIiwibmJmIjoxNzQ0NDM4NDYwLCJpYXQiOjE3NDQ0Mzg0NjAsImV4cCI6MTc0NDQ0MjA2MCwiYXVkIjoicHJvZHVjdEFwaVJlc291cmNlIiwic2NvcGUiOlsicHJvZHVjdEFwaSJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6IkFwaURvZyIsInN1YiI6IjcwNjZlMDU3LWVlZGYtNGM5ZC1hNjQzLTlmMDdhZjJjMWZmYSIsImF1dGhfdGltZSI6MTc0NDQzODQ2MCwiaWRwIjoibG9jYWwiLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiIzRTEyM0Y3NzM1MTQ0MjMyMTYwOEI1RDMxN0U3QzU0RSJ9.ygdw3UdKDiHh4maMe81PUBfoAG7Yo-tgTh7xpbn5mluS_VJ71Wt7il8My-8-4K7wSR9pT19F0H3rSCranRPQgb91JSeWZv7vpeeF_AzcjmvC9WZoC8ECmYfBR-WUDRI-lhPKaRa-aOEN47aeRzQWnoS_ASw_43Na7YAw69zdlNDFo4lnEgQYk-EsWcwkNnORsPrwxKZp2tHraaFOvrgreflr8qBKnceWjnNvt5mdWZSfdFAc1lCk3LOaUbjeLxAMex6CaKoVRyuG0dAhIhTs0NygCFWvY9vzznUY8B6qzb1TVLqWMzaejofs0a45g3aqM52DeldkLvwR1jRhl7Wmow",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "method": "PUT",
+                                        "body": {
+                                            "mode": "raw"
+                                        },
+                                        "header": [],
+                                        "url": {
+                                            "raw": "https://localhost:7056/api/productAdmin/update/131457F7-BA46-4F62-50DD-08DD75B6717A",
+                                            "path": [
+                                                "api",
+                                                "productAdmin",
+                                                "update",
+                                                "131457F7-BA46-4F62-50DD-08DD75B6717A"
+                                            ],
+                                            "host": [
+                                                "localhost"
+                                            ],
+                                            "protocol": "https",
+                                            "port": "7056",
+                                            "query": [],
+                                            "variable": []
+                                        }
+                                    },
+                                    "response": [],
+                                    "protocolProfileBehavior": {
+                                        "strictSSL": false,
+                                        "followRedirects": true
+                                    }
+                                },
+                                {
+                                    "name": "Delete Product By Id",
+                                    "description": "",
+                                    "event": [],
+                                    "auth": {},
+                                    "request": {
+                                        "auth": {},
+                                        "method": "DELETE",
+                                        "body": {},
+                                        "header": [],
+                                        "url": {
+                                            "raw": "https://localhost:7056/api/productAdmin/delete/131457F7-BA46-4F62-50DD-08DD75B6717A",
+                                            "path": [
+                                                "api",
+                                                "productAdmin",
+                                                "delete",
+                                                "131457F7-BA46-4F62-50DD-08DD75B6717A"
+                                            ],
+                                            "host": [
+                                                "localhost"
+                                            ],
+                                            "protocol": "https",
+                                            "port": "7056",
+                                            "query": [],
+                                            "variable": []
+                                        }
+                                    },
+                                    "response": [],
+                                    "protocolProfileBehavior": {
+                                        "strictSSL": false,
+                                        "followRedirects": true
+                                    }
+                                }
+                            ],
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [],
+                                        "type": "text/javascript",
+                                        "packages": {}
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [],
+                                        "type": "text/javascript",
+                                        "packages": {}
+                                    }
+                                }
+                            ],
+                            "auth": {}
+                        },
+                        {
+                            "name": "Get Product By Id",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "noauth",
+                                    "noauth": []
+                                },
+                                "method": "GET",
+                                "body": {},
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/product/131457F7-BA46-4F62-50DD-08DD75B6717A",
+                                    "path": [
+                                        "gateway",
+                                        "product",
+                                        "131457F7-BA46-4F62-50DD-08DD75B6717A"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        },
+                        {
+                            "name": "Get Product List",
+                            "description": "",
+                            "event": [],
+                            "auth": {},
+                            "request": {
+                                "auth": {
+                                    "type": "noauth",
+                                    "noauth": []
+                                },
+                                "method": "GET",
+                                "body": {},
+                                "header": [],
+                                "url": {
+                                    "raw": "https://localhost:3030/gateway/product/list",
+                                    "path": [
+                                        "gateway",
+                                        "product",
+                                        "list"
+                                    ],
+                                    "host": [
+                                        "localhost"
+                                    ],
+                                    "protocol": "https",
+                                    "port": "3030",
+                                    "query": [],
+                                    "variable": []
+                                }
+                            },
+                            "response": [],
+                            "protocolProfileBehavior": {
+                                "strictSSL": false,
+                                "followRedirects": true
+                            }
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        }
+                    ],
+                    "auth": {}
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "auth": {}
+        }
+    ],
+    "variable": [],
+    "event": [],
+    "auth": {}
+}
