@@ -8,7 +8,7 @@ namespace Order.Persistance.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-6ND9QO1\\SQLEXPRESS;initial Catalog=OrderDB;integrated Security=true;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=HPYZSG3\\SQLEXPRESS01;initial Catalog=OrderDB;integrated Security=true;TrustServerCertificate=True");
         }
         public OrderDbContext()
         {

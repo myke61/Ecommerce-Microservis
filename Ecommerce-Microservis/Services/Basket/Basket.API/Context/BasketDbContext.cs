@@ -1,6 +1,7 @@
 ﻿using Basket.API.Outbox;
 using Ecommerce.Base.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Basket.API.Context
 {
@@ -25,6 +26,12 @@ namespace Basket.API.Context
             }
 
             return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Product.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialContext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,9 +37,9 @@ namespace Product.Persistence.Migrations
                 columns: new[] { "Id", "Category", "Code", "CreatedDate", "ImageURL", "IsDeleted", "Name", "Price", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("39ecb0f9-e945-48ea-9880-8400d61cb7c9"), "Phone", "Iphone13White", new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Local), "https://productimages.hepsiburada.net/s/189/424-600/110000155170588.jpg/format:webp", false, "Iphone 13", 34299.0m, new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Local) },
-                    { new Guid("60742fba-3da2-42ec-931a-7e7edd77d3a5"), "Phone", "Iphone15White", new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Local), "https://productimages.hepsiburada.net/s/462/424-600/110000498573428.jpg/format:webp", false, "Iphone 15", 48299.0m, new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Local) },
-                    { new Guid("63870905-124c-41be-9827-a9e026172fb6"), "Phone", "Iphone14White", new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Local), "https://productimages.hepsiburada.net/s/376/424-600/110000393677091.jpg/format:webp", false, "Iphone 14", 38299.0m, new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Local) }
+                    { new Guid("39ecb0f9-e945-48ea-9880-8400d61cb7c9"), "Phone", "Iphone13White", new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Local), "https://productimages.hepsiburada.net/s/189/424-600/110000155170588.jpg/format:webp", false, "Iphone 13", 34299.0m, new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Local) },
+                    { new Guid("60742fba-3da2-42ec-931a-7e7edd77d3a5"), "Phone", "Iphone15White", new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Local), "https://productimages.hepsiburada.net/s/462/424-600/110000498573428.jpg/format:webp", false, "Iphone 15", 48299.0m, new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Local) },
+                    { new Guid("63870905-124c-41be-9827-a9e026172fb6"), "Phone", "Iphone14White", new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Local), "https://productimages.hepsiburada.net/s/376/424-600/110000393677091.jpg/format:webp", false, "Iphone 14", 38299.0m, new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Local) }
                 });
 
             migrationBuilder.CreateIndex(
