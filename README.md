@@ -48,20 +48,26 @@ Bu proje, modern yazılım mimarisi prensiplerini temel alan, ölçeklenebilir v
 ### ElasticSearch
 docker run -d --name elasticsearch -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.13.0
 
+
 ### Kibana
 docker run -d --name kibana --link elasticsearch:elasticsearch -p 5601:5601 -e "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" docker.elastic.co/kibana/kibana:8.13.0
+
 
 ### EventStoreDB
 docker run --name eventstore-node -d -p 2113:2113 -p 1113:1113 eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http
 
+
 ### RabbitMQ
 docker run -d --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:4-management
+
 
 ### PostgreSQL
 docker run --name some-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -e POSTGRES_DB=BasketDB -d postgres
 
+
 ### Redis
 docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
+
 
 
 🔐 Kimlik Doğrulama
