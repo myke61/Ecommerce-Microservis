@@ -21,9 +21,6 @@ namespace Product.Application.Features.Command.UpdateProduct
         {
             Domain.Entities.Product product = await unitOfWork.GetQuery<Domain.Entities.Product>().GetAsync(x => x.Id == request.Id) ?? throw new Exception("Product Not Found");
             product.Name = request.Name;
-            product.Category = request.Category;    
-            product.ImageURL = request.ImageURl;
-            product.Price = request.Price;
             unitOfWork.GetCommandRepository<Domain.Entities.Product>().Update(product);
             await unitOfWork.SaveAsync();
             return new UpdateProductResponse

@@ -3,19 +3,17 @@ namespace Product.Domain.Entities
 {
     public class Product : BaseEntity
     {
-        public Product(string code,string name, string category,string imageURL,decimal price)
-        {
-            Code = code;
-            Name = name;
-            Category = category;
-            ImageURL = imageURL;
-            Price = price;
-        }
-        public string Code { get; set; }
         public string Name { get; set; }
-        public string Category { get; set; }
-        public string ImageURL { get; set; }
-        public decimal Price { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public string Slug { get; set; }
         public bool IsDeleted { get; set; }
+        public Guid BrandId { get; set; }
+        public Brand Brand { get; set; }
+        public Guid CategoryId { get; set; }
+        public Category Category { get; set; }
+
+        public ICollection<ProductVariant> Variants { get; set; }
+        public ICollection<ProductImage> Images { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Product.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
         {
-            //services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(@"Server=...;initial Catalog=ProductDB;integrated Security=true;"));
+            services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(@"Data Source=DESKTOP-6ND9QO1\SQLEXPRESS;initial Catalog=ProductDB;integrated Security=true;TrustServerCertificate=True"));
             services.AddScoped<DbContext, ProductDbContext>();
             return services;
         }
