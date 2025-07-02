@@ -39,5 +39,28 @@ namespace Ecommerce.Base.Repositories
                 query = include(query);
             return query;
         }
+
+        public async Task<IList<T>> GetPagedListAsync(int page, int pageSize, Expression<Func<T, bool>>? filter = null)
+        {
+            var query = _dbContext.Set<T>().AsQueryable();
+
+            if (filter != null)
+                query = query.Where(filter);
+
+            return await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<int> CountAsync(Expression<Func<T, bool>>? filter = null)
+        {
+            var query = _dbContext.Set<T>().AsQueryable();
+
+            if (filter != null)
+                query = query.Where(filter);
+
+            return await query.CountAsync();
+        }
     }
 }

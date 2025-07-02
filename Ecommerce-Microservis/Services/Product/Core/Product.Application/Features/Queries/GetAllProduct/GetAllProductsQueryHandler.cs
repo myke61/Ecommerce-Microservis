@@ -20,13 +20,37 @@ namespace Product.Application.Features.Queries.GetAllProduct
 
         public async Task<GetAllProductResponse> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var totalProductCount = _unitOfWork.GetQuery<Domain.Entities.Product>().GetListAsync().Result.Count();
+            var repository = _unitOfWork.GetQuery<Domain.Entities.Product>();
 
-            List<Domain.Entities.Product> products = (List<Domain.Entities.Product>)await _unitOfWork.GetQuery<Domain.Entities.Product>().GetListAsync();
+            int totalCount = await repository.CountAsync();
 
-            return new()
+            var products = await repository.GetPagedListAsync(
+                page: request.Page,
+                pageSize: request.PageSize
+            );
+
+            return new GetAllProductResponse
             {
-                Products = products
+                Products = products.Select(p => new Domain.Entities.Product
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Code = p.Code,
+                    Description = p.Description,
+                    Slug = p.Slug,
+                    IsDeleted = p.IsDeleted,
+                    BrandId = p.BrandId,
+                    Brand = p.Brand,
+                    CategoryId = p.CategoryId,
+                    Category = p.Category,
+                    Variants = p.Variants,
+                    Images = p.Images,
+                    CreatedDate = p.CreatedDate,
+                    UpdatedDate = p.UpdatedDate
+                }).ToList(),
+                TotalCount = totalCount,
+                Page = request.Page,
+                PageSize = request.PageSize
             };
         }
     }

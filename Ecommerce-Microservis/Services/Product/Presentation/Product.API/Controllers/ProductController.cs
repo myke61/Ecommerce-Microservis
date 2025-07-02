@@ -54,7 +54,7 @@ namespace Product.API.Controllers
         [HttpGet("list")]
         public async Task<IActionResult> GetAllProducts([FromQuery] GetAllProductRequest request)
         {
-            string cacheKey = $"ProductList";
+            string cacheKey = $"ProductList_Page{request.Page}_Size{request.PageSize}";
             var cachedResponse = await _cache.GetAsync<string>(cacheKey);
             if (cachedResponse != null)
             {

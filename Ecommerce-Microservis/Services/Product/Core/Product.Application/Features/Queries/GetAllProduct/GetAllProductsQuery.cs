@@ -10,5 +10,7 @@ namespace Product.Application.Features.Queries.GetAllProduct
 {
     public class GetAllProductsQuery : IRequest<GetAllProductResponse>
     {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
     }
 }

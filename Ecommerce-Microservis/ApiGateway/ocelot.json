@@ -15,13 +15,13 @@
           "Port": 7056
         }
       ],
-      "RateLimitOptions": {
+      /*"RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
         "Period": "10s",
         "PeriodTimespan": 10,
         "Limit": 4
-      }
+      }*/
     },
     //Basket Service
     {
