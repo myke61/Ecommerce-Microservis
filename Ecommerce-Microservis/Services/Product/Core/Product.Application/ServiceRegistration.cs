@@ -1,8 +1,5 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Product.Application.Features.Command.CreateProduct;
-using Product.Application.Features.Command.DeleteProduct;
-using Product.Application.Features.Command.UpdateProduct;
 using Product.Application.Features.Queries.GetAllProduct;
 using Product.Application.Features.Queries.GetProductById;
 using System;

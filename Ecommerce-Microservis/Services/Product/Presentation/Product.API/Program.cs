@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
-using Product.API.Middleware;
 using Product.Application;
 using Product.Persistence;
 using System.Security.Claims;
@@ -100,8 +99,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseMiddleware<AdminMiddleware>();
 
 app.MapControllers();
 
