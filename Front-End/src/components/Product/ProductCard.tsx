@@ -21,9 +21,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const defaultVariant = product.variants?.find(v => v.isDefault) || product.variants?.[0];
   const price = defaultVariant?.price || 99.99; // Fallback price
   const originalPrice = defaultVariant?.originalPrice;
-  const stock = defaultVariant?.stock || 0;
-  const mainImage = product.images?.find(img => img.isMain)?.url || 
-                   product.images?.[0]?.url || 
+  const stock = defaultVariant?.stockQuantity || 0;
+  
+  // Use the actual image URL from API or fallback
+  const mainImage = product.images?.find(img => img.isMain)?.imageUrl || 
+                   product.images?.[0]?.imageUrl || 
                    'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg'; // Fallback image
 
   const discountPercentage = originalPrice 
@@ -31,18 +33,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     : 0;
 
   // Mock rating data since it's not in API response
-  const rating = product.rating || 4.2;
-  const reviewCount = product.reviewCount || Math.floor(Math.random() * 200) + 10;
+  const rating = 4.2 + Math.random() * 0.6; // Random rating between 4.2-4.8
+  const reviewCount = Math.floor(Math.random() * 200) + 10;
 
   return (
     <div className="group relative bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200">
-      <Link to={`/products/${product.slug}`}>
+      <Link to={`/products/${product.id}`}>
         {/* Image Container */}
         <div className="relative aspect-square overflow-hidden bg-gray-100">
           <img
             src={mainImage}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            onError={(e) => {
+              // Fallback to placeholder if image fails to load
+              e.currentTarget.src = 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg';
+            }}
           />
           
           {/* Badges */}
@@ -125,6 +131,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <span className="text-xs text-red-600 font-medium">Out of Stock</span>
             )}
           </div>
+
+          {/* Category */}
+          {product.category && (
+            <div className="mt-2">
+              <span className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
+                {product.category.name}
+              </span>
+            </div>
+          )}
         </div>
       </Link>
     </div>

@@ -9,7 +9,7 @@ namespace Product.Application.Features.Queries.GetAllProduct
 {
     public static class GetAllProductsExtensions
     {
-        public static GetAllProductResponse Map(this List<Domain.Entities.Product> products)
+        public static GetAllProductResponse Map(this List<ProductDto> products)
         {
             return new GetAllProductResponse
             {

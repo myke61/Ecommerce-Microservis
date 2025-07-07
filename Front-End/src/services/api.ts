@@ -79,7 +79,7 @@ class ApiService {
     page?: number;
     pageSize?: number;
     category?: string;
-    search?: string;
+    name?: string; // Changed from 'search' to 'name'
     sortBy?: string;
     minPrice?: number;
     maxPrice?: number;

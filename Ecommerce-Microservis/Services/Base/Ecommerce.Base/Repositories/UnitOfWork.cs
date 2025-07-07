@@ -42,10 +42,7 @@ namespace Ecommerce.Base.Repositories
 
         public IQueryRepository<T> GetQuery<T>() where T : BaseEntity
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes());
-            var type = types.First(x => typeof(QueryRepository<T>).IsAssignableFrom(x)) ?? throw new InvalidOperationException($"No matching type found for {typeof(QueryRepository<T>).Name}");
-            var instance = Activator.CreateInstance(type,args: [_dbContext]) as QueryRepository<T>;
-            return instance;
+            return new QueryRepository<T>(_dbContext);
         }
 
         public ICommandRepository<T> GetCommandRepository<T>() where T : BaseEntity

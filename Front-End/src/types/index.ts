@@ -38,9 +38,10 @@ export interface Product {
 export interface Brand {
   id: string;
   name: string;
-  slug: string;
+  slug?: string;
   description?: string;
   logo?: string;
+  logoUrl?: string;
 }
 
 export interface ProductVariant {
@@ -49,7 +50,8 @@ export interface ProductVariant {
   sku: string;
   price: number;
   originalPrice?: number;
-  stock: number;
+  stock?: number;
+  stockQuantity?: number;
   attributes: Record<string, string>; // size, color, etc.
   isDefault: boolean;
 }
@@ -57,9 +59,11 @@ export interface ProductVariant {
 export interface ProductImage {
   id: string;
   productId: string;
-  url: string;
+  url?: string;
+  imageUrl?: string;
   altText?: string;
-  sortOrder: number;
+  sortOrder?: number;
+  displayOrder?: number;
   isMain: boolean;
 }
 

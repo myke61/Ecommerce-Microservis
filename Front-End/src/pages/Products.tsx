@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Filter, Grid, List, SlidersHorizontal, ChevronDown } from 'lucide-react';
+import { Filter, Grid, List, SlidersHorizontal, ChevronDown, Search as SearchIcon } from 'lucide-react';
 import { ProductCard } from '../components/Product/ProductCard';
 import { Product } from '../types';
 import { apiService } from '../services/api';
@@ -10,6 +10,7 @@ export const Products: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('name');
@@ -19,7 +20,7 @@ export const Products: React.FC = () => {
   const [pageSize] = useState(12);
   const [filters, setFilters] = useState({
     category: searchParams.get('category') || '',
-    search: searchParams.get('search') || '',
+    name: searchParams.get('name') || '',
     minPrice: searchParams.get('minPrice') || '',
     maxPrice: searchParams.get('maxPrice') || '',
   });
@@ -30,10 +31,6 @@ export const Products: React.FC = () => {
       const params = {
         page: currentPage,
         pageSize: pageSize,
-        ...(filters.category && { category: filters.category }),
-        ...(filters.search && { search: filters.search }),
-        ...(filters.minPrice && { minPrice: parseFloat(filters.minPrice) }),
-        ...(filters.maxPrice && { maxPrice: parseFloat(filters.maxPrice) }),
         sortBy,
       };
 
@@ -44,16 +41,6 @@ export const Products: React.FC = () => {
       setTotalPages(response.totalPages || 1);
       setTotalCount(response.totalCount || 0);
       
-      // Add mock data for missing fields
-      const enhancedProducts = (response.products || []).map(product => ({
-        ...product,
-        rating: 4.2 + Math.random() * 0.6, // Random rating between 4.2-4.8
-        reviewCount: Math.floor(Math.random() * 200) + 10,
-        isNew: Math.random() > 0.8, // 20% chance of being new
-        tags: ['popular'],
-      }));
-      
-      setProducts(enhancedProducts);
     } catch (error) {
       console.error('Failed to load products:', error);
       toast.error('Failed to load products');
@@ -63,16 +50,11 @@ export const Products: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    loadProducts();
-  }, [currentPage, sortBy, filters]);
-
   const handleFilterChange = (key: string, value: string) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
-    setCurrentPage(1);
 
-    // Update URL params
+    // Update URL params but don't trigger API call
     const newSearchParams = new URLSearchParams();
     Object.entries(newFilters).forEach(([k, v]) => {
       if (v) newSearchParams.set(k, v);
@@ -80,34 +62,69 @@ export const Products: React.FC = () => {
     setSearchParams(newSearchParams);
   };
 
+  const handleFilterRequest = async () => {
+    setButtonLoading(true);
+    try {
+      // Build the request parameters using current filter state
+      const params = {
+        page: 1, // Reset to first page when filtering
+        pageSize: pageSize,
+        sortBy: sortBy,
+        ...(filters.name && { name: filters.name }),
+        ...(filters.category && { category: filters.category }),
+        ...(filters.minPrice && { minPrice: parseFloat(filters.minPrice) }),
+        ...(filters.maxPrice && { maxPrice: parseFloat(filters.maxPrice) }),
+      };
+
+      console.log('Making filter request with params:', params);
+
+      const response = await apiService.getProducts(params);
+      
+      console.log('Filter request response:', response);
+      toast.success('Search completed successfully!');
+      
+      // Update products with the response
+      setProducts(response.products || []);
+      setTotalPages(response.totalPages || 1);
+      setTotalCount(response.totalCount || 0);
+      setCurrentPage(1); // Reset to first page
+      
+    } catch (error) {
+      console.error('Filter request failed:', error);
+      toast.error('Search failed. Please try again.');
+    } finally {
+      setButtonLoading(false);
+    }
+  };
+
   const clearFilters = () => {
     setFilters({
       category: '',
-      search: '',
+      name: '',
       minPrice: '',
       maxPrice: '',
     });
     setSearchParams({});
     setCurrentPage(1);
+    // Reload products without filters
+    loadProducts();
   };
 
-  const categories = [
-    'Electronics',
-    'Clothing',
-    'Home & Garden',
-    'Sports',
-    'Books',
-    'Beauty',
-    'Automotive',
-    'Toys',
-  ];
+  // Load products on initial mount, page change, or sort change
+  useEffect(() => {
+    loadProducts();
+  }, [currentPage, sortBy]);
+
+  // Get available categories from current products
+  const availableCategories = Array.from(
+    new Set(products.map(p => p.category?.name).filter(Boolean))
+  );
 
   const sortOptions = [
     { value: 'name', label: 'Name A-Z' },
     { value: 'name_desc', label: 'Name Z-A' },
     { value: 'price', label: 'Price Low to High' },
     { value: 'price_desc', label: 'Price High to Low' },
-    { value: 'rating', label: 'Highest Rated' },
     { value: 'newest', label: 'Newest First' },
   ];
 
@@ -189,16 +206,16 @@ export const Products: React.FC = () => {
               </button>
             </div>
 
-            {/* Search Filter */}
+            {/* Product Name Filter */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Search
+                Product Name
               </label>
               <input
                 type="text"
-                value={filters.search}
-                onChange={(e) => handleFilterChange('search', e.target.value)}
-                placeholder="Search products..."
+                value={filters.name}
+                onChange={(e) => handleFilterChange('name', e.target.value)}
+                placeholder="Search by product name..."
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
@@ -214,7 +231,7 @@ export const Products: React.FC = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="">All Categories</option>
-                {categories.map((category) => (
+                {availableCategories.map((category) => (
                   <option key={category} value={category}>
                     {category}
                   </option>
@@ -243,6 +260,30 @@ export const Products: React.FC = () => {
                   className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
+            </div>
+
+            {/* Search Button */}
+            <div className="pt-4 border-t border-gray-200">
+              <button
+                onClick={handleFilterRequest}
+                disabled={buttonLoading}
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+              >
+                {buttonLoading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                    <span>Searching...</span>
+                  </>
+                ) : (
+                  <>
+                    <SearchIcon className="h-4 w-4" />
+                    <span>Search Products</span>
+                  </>
+                )}
+              </button>
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                Apply filters to search products
+              </p>
             </div>
           </div>
         </div>

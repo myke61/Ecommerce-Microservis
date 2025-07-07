@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { Layout } from './components/Layout/Layout';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
+import { ProductDetail } from './pages/ProductDetail';
 import { Login } from './pages/Login';
 import { Cart } from './pages/Cart';
 import { useAuthStore } from './store/authStore';
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             {/* Add more routes as needed */}
