@@ -6,13 +6,20 @@ import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { ProductDetail } from './pages/ProductDetail';
 import { Login } from './pages/Login';
+import { AuthCallback } from './pages/AuthCallback';
+import { AuthSilentCallback } from './pages/AuthSilentCallback';
 import { Cart } from './pages/Cart';
 import { useAuthStore } from './store/authStore';
 import { useCartStore } from './store/cartStore';
 
 function App() {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, checkAuth } = useAuthStore();
   const { loadCart } = useCartStore();
+
+  useEffect(() => {
+    // Check authentication status on app start
+    checkAuth();
+  }, [checkAuth]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -29,6 +36,8 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/auth/silent-callback" element={<AuthSilentCallback />} />
             <Route path="/cart" element={<Cart />} />
             {/* Add more routes as needed */}
           </Routes>

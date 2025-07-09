@@ -1,18 +1,41 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { User as OidcUser } from 'oidc-client-ts';
 import { User, AuthTokens } from '../types';
-import { apiService } from '../services/api';
+import { authService } from '../services/authService';
 
 interface AuthState {
   user: User | null;
   tokens: AuthTokens | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
-  refreshToken: () => Promise<void>;
+  initiateLogin: () => Promise<void>;
+  handleAuthCallback: () => Promise<void>;
+  logout: () => Promise<void>;
+  logoutSilent: () => Promise<void>;
+  checkAuth: () => Promise<void>;
+  renewToken: () => Promise<void>;
   setUser: (user: User) => void;
 }
+
+const mapOidcUserToUser = (oidcUser: OidcUser): User => {
+  return {
+    id: oidcUser.profile.sub || '1',
+    email: oidcUser.profile.email || '',
+    firstName: oidcUser.profile.given_name || oidcUser.profile.name || 'User',
+    lastName: oidcUser.profile.family_name || '',
+    role: 'customer',
+    avatar: oidcUser.profile.picture,
+  };
+};
+
+const mapOidcUserToTokens = (oidcUser: OidcUser): AuthTokens => {
+  return {
+    accessToken: oidcUser.access_token,
+    refreshToken: oidcUser.refresh_token || '',
+    expiresAt: oidcUser.expires_at ? oidcUser.expires_at * 1000 : Date.now() + 3600000,
+  };
+};
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -22,58 +45,146 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
       isLoading: false,
 
-      login: async (email: string, password: string) => {
+      initiateLogin: async () => {
         set({ isLoading: true });
         try {
-          const response = await apiService.login(email, password);
-          const tokens: AuthTokens = {
-            accessToken: response.access_token,
-            refreshToken: response.refresh_token,
-            expiresAt: Date.now() + response.expires_in * 1000,
-          };
-
-          localStorage.setItem('access_token', tokens.accessToken);
-          
-          // Get user profile after successful login
-          const userProfile = await apiService.getUserProfile();
-          
-          set({
-            tokens,
-            user: userProfile,
-            isAuthenticated: true,
-            isLoading: false,
-          });
+          await authService.login();
         } catch (error) {
+          console.error('Login initiation error:', error);
           set({ isLoading: false });
           throw error;
         }
       },
 
-      logout: () => {
-        localStorage.removeItem('access_token');
-        set({
-          user: null,
-          tokens: null,
-          isAuthenticated: false,
-        });
+      handleAuthCallback: async () => {
+        set({ isLoading: true });
+        try {
+          const oidcUser = await authService.handleCallback();
+          
+          if (oidcUser) {
+            const user = mapOidcUserToUser(oidcUser);
+            const tokens = mapOidcUserToTokens(oidcUser);
+
+            // Store access token in localStorage for API calls
+            localStorage.setItem('access_token', tokens.accessToken);
+            
+            set({
+              user,
+              tokens,
+              isAuthenticated: true,
+              isLoading: false,
+            });
+          } else {
+            set({ isLoading: false });
+            throw new Error('No user returned from callback');
+          }
+        } catch (error) {
+          console.error('Auth callback error:', error);
+          set({ isLoading: false });
+          throw error;
+        }
       },
 
-      refreshToken: async () => {
-        const { tokens } = get();
-        if (!tokens?.refreshToken) return;
-
+      logout: async () => {
+        set({ isLoading: true });
         try {
-          const response = await apiService.refreshToken(tokens.refreshToken);
-          const newTokens: AuthTokens = {
-            accessToken: response.access_token,
-            refreshToken: response.refresh_token || tokens.refreshToken,
-            expiresAt: Date.now() + response.expires_in * 1000,
-          };
-
-          localStorage.setItem('access_token', newTokens.accessToken);
-          set({ tokens: newTokens });
+          await authService.logout();
+          localStorage.removeItem('access_token');
+          set({
+            user: null,
+            tokens: null,
+            isAuthenticated: false,
+            isLoading: false,
+          });
         } catch (error) {
-          get().logout();
+          console.error('Logout error:', error);
+          // Even if logout fails, clear local state
+          localStorage.removeItem('access_token');
+          set({
+            user: null,
+            tokens: null,
+            isAuthenticated: false,
+            isLoading: false,
+          });
+        }
+      },
+
+      logoutSilent: async () => {
+        try {
+          await authService.logoutSilent();
+          localStorage.removeItem('access_token');
+          set({
+            user: null,
+            tokens: null,
+            isAuthenticated: false,
+          });
+        } catch (error) {
+          console.error('Silent logout error:', error);
+          // Even if logout fails, clear local state
+          localStorage.removeItem('access_token');
+          set({
+            user: null,
+            tokens: null,
+            isAuthenticated: false,
+          });
+        }
+      },
+
+      checkAuth: async () => {
+        try {
+          const oidcUser = await authService.getUser();
+          
+          if (oidcUser && !oidcUser.expired) {
+            const user = mapOidcUserToUser(oidcUser);
+            const tokens = mapOidcUserToTokens(oidcUser);
+
+            localStorage.setItem('access_token', tokens.accessToken);
+            
+            set({
+              user,
+              tokens,
+              isAuthenticated: true,
+            });
+          } else {
+            // User is not authenticated or token expired
+            localStorage.removeItem('access_token');
+            set({
+              user: null,
+              tokens: null,
+              isAuthenticated: false,
+            });
+          }
+        } catch (error) {
+          console.error('Check auth error:', error);
+          localStorage.removeItem('access_token');
+          set({
+            user: null,
+            tokens: null,
+            isAuthenticated: false,
+          });
+        }
+      },
+
+      renewToken: async () => {
+        try {
+          const oidcUser = await authService.renewToken();
+          
+          if (oidcUser) {
+            const user = mapOidcUserToUser(oidcUser);
+            const tokens = mapOidcUserToTokens(oidcUser);
+
+            localStorage.setItem('access_token', tokens.accessToken);
+            
+            set({
+              user,
+              tokens,
+              isAuthenticated: true,
+            });
+          }
+        } catch (error) {
+          console.error('Token renewal error:', error);
+          // If renewal fails, logout
+          get().logoutSilent();
         }
       },
 

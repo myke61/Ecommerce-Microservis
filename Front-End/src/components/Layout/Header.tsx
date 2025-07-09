@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu, X, Heart, Package } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { useCartStore } from '../../store/cartStore';
+import { apiService } from '../../services/api';
+import { Category } from '../../types';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [categories, setCategories] = useState<Category[]>([]);
   
   const { user, isAuthenticated, logout } = useAuthStore();
   const { itemCount } = useCartStore();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = async () => {
+    try {
+      const response = await apiService.getCategories();
+      setCategories(response.categories || []);
+    } catch (error) {
+      console.error('Failed to load categories:', error);
+    }
+  };
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+      navigate(`/products?name=${encodeURIComponent(searchQuery)}`);
       setSearchQuery('');
     }
   };
@@ -163,15 +179,15 @@ export const Header: React.FC = () => {
           <Link to="/products" className="text-gray-700 hover:text-blue-600">
             All Products
           </Link>
-          <Link to="/categories/electronics" className="text-gray-700 hover:text-blue-600">
-            Electronics
-          </Link>
-          <Link to="/categories/clothing" className="text-gray-700 hover:text-blue-600">
-            Clothing
-          </Link>
-          <Link to="/categories/home" className="text-gray-700 hover:text-blue-600">
-            Home & Garden
-          </Link>
+          {categories.slice(0, 4).map((category) => (
+            <Link
+              key={category.id}
+              to={`/products?category=${category.name}`}
+              className="text-gray-700 hover:text-blue-600"
+            >
+              {category.name}
+            </Link>
+          ))}
           <Link to="/deals" className="text-gray-700 hover:text-blue-600">
             Deals
           </Link>
@@ -211,27 +227,16 @@ export const Header: React.FC = () => {
             >
               All Products
             </Link>
-            <Link
-              to="/categories/electronics"
-              className="block py-2 text-gray-700 hover:text-blue-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Electronics
-            </Link>
-            <Link
-              to="/categories/clothing"
-              className="block py-2 text-gray-700 hover:text-blue-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Clothing
-            </Link>
-            <Link
-              to="/categories/home"
-              className="block py-2 text-gray-700 hover:text-blue-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home & Garden
-            </Link>
+            {categories.map((category) => (
+              <Link
+                key={category.id}
+                to={`/products?category=${category.name}`}
+                className="block py-2 text-gray-700 hover:text-blue-600"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {category.name}
+              </Link>
+            ))}
             <Link
               to="/deals"
               className="block py-2 text-gray-700 hover:text-blue-600"

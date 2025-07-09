@@ -1,16 +1,13 @@
 // API configuration for .NET backend integration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:3030/gateway';
-const IDENTITY_SERVER_URL = import.meta.env.VITE_IDENTITY_SERVER_URL || 'https://localhost:5001';
 
 import { ProductListResponse } from '../types';
 
 class ApiService {
   private baseURL: string;
-  private identityServerURL: string;
 
   constructor() {
     this.baseURL = API_BASE_URL;
-    this.identityServerURL = IDENTITY_SERVER_URL;
   }
 
   private async getAuthHeaders(): Promise<Record<string, string>> {
@@ -37,41 +34,6 @@ class ApiService {
       throw new Error(`API Error: ${response.status}`);
     }
     return response.json();
-  }
-
-  // Authentication methods for Identity Server integration
-  async login(email: string, password: string) {
-    const response = await fetch(`${this.identityServerURL}/connect/token`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        grant_type: 'password',
-        username: email,
-        password: password,
-        client_id: 'ecommerce-spa',
-        scope: 'openid profile email ecommerce-api',
-      }),
-    });
-
-    return this.handleResponse(response);
-  }
-
-  async refreshToken(refreshToken: string) {
-    const response = await fetch(`${this.identityServerURL}/connect/token`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        grant_type: 'refresh_token',
-        refresh_token: refreshToken,
-        client_id: 'ecommerce-spa',
-      }),
-    });
-
-    return this.handleResponse(response);
   }
 
   // Product API methods - Open API (no authorization required)
@@ -122,7 +84,8 @@ class ApiService {
 
   // Category API methods - Open API
   async getCategories() {
-    const response = await fetch(`${this.baseURL}/categories`, {
+    const response = await fetch(`${this.baseURL}/category/list`, {
+      method: 'GET',
       headers: this.getPublicHeaders(),
     });
 

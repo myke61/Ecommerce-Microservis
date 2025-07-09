@@ -6,7 +6,7 @@
     {
       //Product Service
       "UpstreamPathTemplate": "/gateway/product/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/api/product/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -14,7 +14,27 @@
           "Host": "localhost",
           "Port": 7056
         }
-      ],
+      ]
+      /*"RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 4
+      }*/
+    },
+    {
+      //Category Service
+      "UpstreamPathTemplate": "/gateway/category/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/category/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7056
+        }
+      ]
       /*"RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,

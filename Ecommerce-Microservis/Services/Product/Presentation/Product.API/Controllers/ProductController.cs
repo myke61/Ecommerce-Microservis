@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Caching.Redis.Interface;
-using Ecommerce.Base.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using Product.Application.Features.Queries.GetAllProduct;
 using Product.Application.Features.Queries.GetProductById;

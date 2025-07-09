@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Filter, Grid, List, SlidersHorizontal, ChevronDown, Search as SearchIcon } from 'lucide-react';
 import { ProductCard } from '../components/Product/ProductCard';
-import { Product } from '../types';
+import { Product, Category } from '../types';
 import { apiService } from '../services/api';
 import toast from 'react-hot-toast';
 
 export const Products: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [buttonLoading, setButtonLoading] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -24,6 +25,19 @@ export const Products: React.FC = () => {
     minPrice: searchParams.get('minPrice') || '',
     maxPrice: searchParams.get('maxPrice') || '',
   });
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = async () => {
+    try {
+      const response = await apiService.getCategories();
+      setCategories(response.categories || []);
+    } catch (error) {
+      console.error('Failed to load categories:', error);
+    }
+  };
 
   const loadProducts = async () => {
     setLoading(true);
@@ -115,10 +129,26 @@ export const Products: React.FC = () => {
     loadProducts();
   }, [currentPage, sortBy]);
 
-  // Get available categories from current products
-  const availableCategories = Array.from(
-    new Set(products.map(p => p.category?.name).filter(Boolean))
-  );
+  // Set initial filters from URL params
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category');
+    const nameFromUrl = searchParams.get('name');
+    
+    if (categoryFromUrl || nameFromUrl) {
+      setFilters(prev => ({
+        ...prev,
+        category: categoryFromUrl || '',
+        name: nameFromUrl || '',
+      }));
+      
+      // Auto-trigger search if there are URL params
+      if (categoryFromUrl || nameFromUrl) {
+        setTimeout(() => {
+          handleFilterRequest();
+        }, 100);
+      }
+    }
+  }, [searchParams]);
 
   const sortOptions = [
     { value: 'name', label: 'Name A-Z' },
@@ -231,9 +261,9 @@ export const Products: React.FC = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="">All Categories</option>
-                {availableCategories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
+                {categories.map((category) => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
                   </option>
                 ))}
               </select>
