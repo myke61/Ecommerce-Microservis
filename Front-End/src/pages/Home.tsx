@@ -18,11 +18,11 @@ export const Home: React.FC = () => {
         
         // Load featured products
         const featuredResponse = await apiService.getFeaturedProducts();
-        const featured = featuredResponse.products || [];
+        const featured = featuredResponse.productVariants || [];
         
         // Load recent products (simulate new arrivals)
         const recentResponse = await apiService.getProducts({ pageSize: 6 });
-        const recent = recentResponse.products || [];
+        const recent = recentResponse.productVariants || [];
         
         // Add mock data for missing fields
         const enhanceProducts = (products: Product[]) => {

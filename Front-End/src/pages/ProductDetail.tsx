@@ -42,11 +42,6 @@ export const ProductDetail: React.FC = () => {
       const response = await apiService.getProduct(productId);
       setProduct(response);
       
-      // Set default variant and main image
-      if (response.variants && response.variants.length > 0) {
-        setSelectedVariant(response.variants[0]);
-      }
-      
       // Set main image as first image
       if (response.images && response.images.length > 0) {
         const mainImageIndex = response.images.findIndex(img => img.isMain);
@@ -62,12 +57,10 @@ export const ProductDetail: React.FC = () => {
   };
 
   const handleAddToCart = async () => {
-    if (!product || !selectedVariant) return;
+    if (!product) return;
     
     try {
-      await addItem(product, quantity, {
-        selectedVariant: selectedVariant,
-      });
+      await addItem(product, quantity);
     } catch (error) {
       console.error('Failed to add to cart:', error);
     }
@@ -126,8 +119,8 @@ export const ProductDetail: React.FC = () => {
   }
 
   const currentImage = product.images?.[currentImageIndex];
-  const price = selectedVariant?.price || 0;
-  const stock = selectedVariant?.stockQuantity || 0;
+  const price = product.price || 0;
+  const stock = product.stock || 999;
   const isInStock = stock > 0;
 
   // Mock rating data
@@ -164,7 +157,7 @@ export const ProductDetail: React.FC = () => {
           {/* Main Image */}
           <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden group">
             <img
-              src={currentImage?.imageUrl || 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg'}
+              src={currentImage?.imageUrl || currentImage?.url || 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg'}
               alt={product.name}
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -212,7 +205,7 @@ export const ProductDetail: React.FC = () => {
                   }`}
                 >
                   <img
-                    src={image.imageUrl}
+                    src={image.imageUrl || image.url}
                     alt={`${product.name} ${index + 1}`}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -282,9 +275,9 @@ export const ProductDetail: React.FC = () => {
               <span className="text-3xl font-bold text-gray-900">
                 ${price.toFixed(2)}
               </span>
-              {selectedVariant?.originalPrice && (
+              {product.originalPrice && (
                 <span className="text-xl text-gray-500 line-through">
-                  ${selectedVariant.originalPrice.toFixed(2)}
+                  ${product.originalPrice.toFixed(2)}
                 </span>
               )}
             </div>
@@ -303,29 +296,6 @@ export const ProductDetail: React.FC = () => {
             </div>
           </div>
 
-          {/* Variants */}
-          {product.variants && product.variants.length > 1 && (
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">Variants</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {product.variants.map((variant) => (
-                  <button
-                    key={variant.id}
-                    onClick={() => setSelectedVariant(variant)}
-                    className={`p-3 border rounded-lg text-left ${
-                      selectedVariant?.id === variant.id
-                        ? 'border-blue-600 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <div className="font-medium">{variant.sku}</div>
-                    <div className="text-sm text-gray-600">${variant.price.toFixed(2)}</div>
-                    <div className="text-xs text-gray-500">Stock: {variant.stockQuantity}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Quantity and Add to Cart */}
           <div className="space-y-4">

@@ -51,7 +51,7 @@ export const Products: React.FC = () => {
       const response = await apiService.getProducts(params);
       
       // Handle the new API response structure
-      setProducts(response.products || []);
+      setProducts(response.productVariants || []);
       setTotalPages(response.totalPages || 1);
       setTotalCount(response.totalCount || 0);
       
@@ -98,7 +98,7 @@ export const Products: React.FC = () => {
       toast.success('Search completed successfully!');
       
       // Update products with the response
-      setProducts(response.products || []);
+      setProducts(response.productVariants || []);
       setTotalPages(response.totalPages || 1);
       setTotalCount(response.totalCount || 0);
       setCurrentPage(1); // Reset to first page

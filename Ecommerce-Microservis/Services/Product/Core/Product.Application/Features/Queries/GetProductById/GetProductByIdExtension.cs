@@ -1,4 +1,5 @@
 ﻿using Product.Application.Responses.GetProductById;
+using Product.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,55 +10,37 @@ namespace Product.Application.Features.Queries.GetProductById
 {
     public static class GetProductByIdExtension
     {
-        public static GetProductByIdResponse Map(this Domain.Entities.Product product)
+        public static GetProductByIdResponse Map(this ProductVariant productVariant)
         {
-            List<ProductVariantMapper> variants = [];
-            List<ProductImageMapper> images = [];
-            foreach (var item in product.Variants)
-            {
-                var dataVariant = new ProductVariantMapper
-                {
-                    Id = item.Id,
-                    Sku = item.Sku,
-                    Price = item.Price,
-                    StockQuantity = item.StockQuantity,
-                };
-                variants.Add(dataVariant);
-            }
-            foreach (var image in product.Images)
-            {
-                var dataImage = new ProductImageMapper
-                {
-                    Id = image.Id,
-                    DisplayOrder = image.DisplayOrder,
-                    ImageUrl = image.ImageUrl,
-                    IsMain = image.IsMain,
-                };
-                images.Add(dataImage);
-            }
             return new GetProductByIdResponse
             {
-                Id = product.Id,
-                Code = product.Code,
-                Name = product.Name,
-                Description = product.Description,
-                Slug = product.Slug,
+                Id = productVariant.Id,
+                Code = productVariant.Product.Code,
+                Name = productVariant.Product.Name,
+                Description = productVariant.Product.Description,
+                Slug = productVariant.Product.Slug,
+                Price = productVariant.Price,
                 Brand = new ProductBrand
                 {
-                    Id = product.Brand.Id,
-                    Name = product.Brand.Name,
-                    Description = product.Brand.Description,
-                    LogoUrl = product.Brand.LogoUrl
+                    Id = productVariant.Product.Brand.Id,
+                    Name = productVariant.Product.Brand.Name,
+                    Description = productVariant.Product.Brand.Description,
+                    LogoUrl = productVariant.Product.Brand.LogoUrl
                 },
                 Category = new ProductCategory
                 {
-                    Id = product.Category.Id,
-                    Name = product.Category.Name,
-                    Description = product.Category.Description,
-                    Slug = product.Category.Slug
+                    Id = productVariant.Product.Category.Id,
+                    Name = productVariant.Product.Category.Name,
+                    Description = productVariant.Product.Category.Description,
+                    Slug = productVariant.Product.Category.Slug
                 },
-                Variants = variants,
-                Images = images
+                Images = [.. productVariant.Product.Images.Select(image => new ProductImageMapper
+                {
+                    Id = image.Id,
+                    ImageUrl = image.ImageUrl,
+                    DisplayOrder = image.DisplayOrder,
+                    IsMain = image.IsMain
+                })]
             };
         }
 

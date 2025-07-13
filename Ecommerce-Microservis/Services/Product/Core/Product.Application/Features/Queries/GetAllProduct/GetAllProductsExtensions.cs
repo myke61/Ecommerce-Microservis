@@ -9,11 +9,11 @@ namespace Product.Application.Features.Queries.GetAllProduct
 {
     public static class GetAllProductsExtensions
     {
-        public static GetAllProductResponse Map(this List<ProductDto> products)
+        public static GetAllProductResponse Map(this List<ProductVariantDto> products)
         {
             return new GetAllProductResponse
             {
-                Products = products,
+                ProductVariants = products,
             };
         }
 

@@ -33,7 +33,16 @@ class ApiService {
       }
       throw new Error(`API Error: ${response.status}`);
     }
-    return response.json();
+    
+    // Check if response has content
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return response.json();
+    } else {
+      // For text responses like "Item added to basket"
+      const text = await response.text();
+      return text as unknown as T;
+    }
   }
 
   // Product API methods - Open API (no authorization required)
@@ -93,38 +102,69 @@ class ApiService {
   }
 
   // Cart API methods - Requires authentication
-  async getCart() {
-    const response = await fetch(`${this.baseURL}/cart`, {
+  async getBasket() {
+    const response = await fetch(`${this.baseURL}/basket/GetBasket`, {
       headers: await this.getAuthHeaders(),
     });
 
     return this.handleResponse(response);
   }
 
-  async addToCart(productId: string, quantity: number, options?: any) {
-    const response = await fetch(`${this.baseURL}/cart/items`, {
+  async addToBasket(productId: string) {
+    const response = await fetch(`${this.baseURL}/basket/AddItem`, {
       method: 'POST',
       headers: await this.getAuthHeaders(),
-      body: JSON.stringify({ productId, quantity, ...options }),
+      body: JSON.stringify({ ProductId: productId }),
     });
 
     return this.handleResponse(response);
   }
 
-  async updateCartItem(itemId: string, quantity: number) {
-    const response = await fetch(`${this.baseURL}/cart/items/${itemId}`, {
+  async updateBasketItem(itemId: string, quantity: number) {
+    const response = await fetch(`${this.baseURL}/basket/UpdateItem`, {
       method: 'PUT',
       headers: await this.getAuthHeaders(),
-      body: JSON.stringify({ quantity }),
+      body: JSON.stringify({ ItemId: itemId, Quantity: quantity }),
     });
 
     return this.handleResponse(response);
   }
 
-  async removeFromCart(itemId: string) {
-    const response = await fetch(`${this.baseURL}/cart/items/${itemId}`, {
+  async removeFromBasket(productId: string) {
+    const response = await fetch(`${this.baseURL}/basket/RemoveItem`, {
+      method: 'POST',
+      headers: await this.getAuthHeaders(),
+      body: JSON.stringify({ ProductId: productId }),
+    });
+
+    return this.handleResponse(response);
+  }
+
+  async clearBasket() {
+    const response = await fetch(`${this.baseURL}/basket/Clear`, {
       method: 'DELETE',
       headers: await this.getAuthHeaders(),
+    });
+
+    return this.handleResponse(response);
+  }
+
+  // Checkout API method - Requires authentication
+  async checkout(checkoutData: {
+    FirstName: string;
+    LastName: string;
+    Email: string;
+    PhoneNumber: string;
+    Address: string;
+    CardNumber: string;
+    CardHolderName: string;
+    ExpirationDate: string;
+    CVC: string;
+  }) {
+    const response = await fetch(`${this.baseURL}/basket/Checkout`, {
+      method: 'POST',
+      headers: await this.getAuthHeaders(),
+      body: JSON.stringify(checkoutData),
     });
 
     return this.handleResponse(response);

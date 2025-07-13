@@ -14,17 +14,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem(product);
+    addItem(product, 1);
   };
 
   // Get default variant or create fallback data
-  const defaultVariant = product.variants?.find(v => v.isDefault) || product.variants?.[0];
-  const price = defaultVariant?.price || 99.99; // Fallback price
-  const originalPrice = defaultVariant?.originalPrice;
-  const stock = defaultVariant?.stockQuantity || 0;
+  const price = product.price || 99.99; // Price is now directly on product
+  const originalPrice = product.originalPrice; // If exists
+  const stock = product.stock || 999; // Default stock
   
   // Use the actual image URL from API or fallback
-  const mainImage = product.images?.find(img => img.isMain)?.imageUrl || 
+  const mainImage = product.images?.find(img => img.isMain)?.url || 
+                   product.images?.[0]?.url || 
+                   product.images?.find(img => img.isMain)?.imageUrl || 
                    product.images?.[0]?.imageUrl || 
                    'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg'; // Fallback image
 

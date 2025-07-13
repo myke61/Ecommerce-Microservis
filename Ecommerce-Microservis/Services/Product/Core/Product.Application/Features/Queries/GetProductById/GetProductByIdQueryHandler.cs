@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore;
 using Product.Application.Responses.GetProductById;
 using System.Linq.Expressions;
+using Product.Domain.Entities;
 
 namespace Product.Application.Features.Queries.GetProductById
 {
@@ -18,14 +19,14 @@ namespace Product.Application.Features.Queries.GetProductById
 
         public async Task<GetProductByIdResponse> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
         {
-            Func<IQueryable<Domain.Entities.Product>, IIncludableQueryable<Domain.Entities.Product, object>> include = query =>
-            query.Include(p => p.Brand)
-                 .Include(p => p.Category)
-                 .Include(p => p.Images)
-                 .Include(p => p.Variants);
+            Func<IQueryable<ProductVariant>, IIncludableQueryable<ProductVariant, object>> include = query =>
+            query.Include(p => p.Product)
+                 .ThenInclude(p => p.Images)
+                 .Include(p => p.Product.Category)
+                    .Include(p => p.Product.Brand);
 
-            Expression<Func<Domain.Entities.Product, bool>> filter = p => p.Id == query.Id;
-            var entity = await _unitOfWork.GetQuery<Domain.Entities.Product>().GetAsync(filter,include);
+            Expression<Func<ProductVariant, bool>> filter = p => p.Id == query.Id;
+            var entity = await _unitOfWork.GetQuery<ProductVariant>().GetAsync(filter,include);
             return entity.Map();
         }
     }

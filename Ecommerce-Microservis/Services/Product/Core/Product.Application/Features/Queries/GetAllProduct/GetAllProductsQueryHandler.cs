@@ -36,7 +36,7 @@ namespace Product.Application.Features.Queries.GetAllProduct
                 query.Include(pv => pv.Product)
                      .ThenInclude(p => p.Category)
                      .Include(pv => pv.Product.Brand)
-                     .Include(pv => pv.Product.Variants)
+                     //.Include(pv => pv.Product.Variants)
                      .Include(pv => pv.Product.Images)
             );
 
@@ -45,71 +45,66 @@ namespace Product.Application.Features.Queries.GetAllProduct
             {
                 variants = request.SortBy.ToLower() switch
                 {
-                    "name" => variants.OrderBy(pv => pv.Product.Name).ToList(),
-                    "price" => variants.OrderBy(pv => pv.Price).ToList(),
+                    "name" => [.. variants.OrderBy(pv => pv.Product.Name)],
+                    "price" => [.. variants.OrderBy(pv => pv.Price)],
                     _ => variants.OrderByDescending(pv => pv.Product.CreatedDate).ToList()
                 };
             }
             else
             {
-                variants = variants.OrderByDescending(pv => pv.Product.CreatedDate).ToList();
+                variants = [.. variants.OrderByDescending(pv => pv.Product.CreatedDate)];
             }
 
             // Gruplama (bir Product sadece bir kez listelensin)
-            var groupedProducts = variants
+            /*var groupedProducts = variants
                 .GroupBy(pv => pv.Product.Id)
                 .Select(g => g.First().Product)
-                .ToList();
+                .ToList();*/
 
-            int totalCount = groupedProducts.Count;
+            int totalCount = variants.Count;
 
             // Sayfalama
-            var pagedProducts = groupedProducts
+            var pagedProductVariants = variants
                 .Skip((request.Page - 1) * request.PageSize)
                 .Take(request.PageSize)
                 .ToList();
 
-            List<ProductDto> dtoProducts = [];
-            foreach (var product in pagedProducts)
+            List<ProductVariantDto> dtoProducts = [];
+            foreach (var variant in pagedProductVariants)
             {
-                ProductDto pro = new()
+                ProductVariantDto pro = new()
                 {
-                    Id = product.Id,
-                    Name = product.Name,
-                    Code = product.Code,
-                    Description = product.Description,
-                    Slug = product.Slug,
+                    Id = variant.Id,
+                    Name = variant.Product.Name,
+                    Code = variant.Product.Code,
+                    Description = variant.Product.Description,
+                    Slug = variant.Product.Slug,
+                    Price = variant.Price,
                     Brand = new BrandDto
                     {
-                        Id = product.Brand.Id,
-                        Name = product.Brand.Name
+                        Id = variant.Product.BrandId,
+                        Name = variant.Product.Brand.Name
                     },
                     Category = new CategoryDto
                     {
-                        Id = product.Category.Id,
-                        Name = product.Category.Name
+                        Id = variant.Product.CategoryId,
+                        Name = variant.Product.Category.Name
                     },
-                    Variants = [.. product.Variants.Select(v => new ProductVariantDto
-                    {
-                        Id = v.Id,
-                        Sku = v.Sku,
-                        Price = v.Price
-                    })],
-                    Images = [.. product.Images.Select(i => new ProductImageDto
+                    Images = [.. variant.Product.Images.Select(i => new ProductImageDto
                     {
                         Id = i.Id,
                         Url = i.ImageUrl,
                         IsMain = i.IsMain
                     })],
-                    CreatedDate = product.CreatedDate,
-                    UpdatedDate = product.UpdatedDate
+                    CreatedDate = variant.CreatedDate,
+                    UpdatedDate = variant.UpdatedDate
                 };
                 dtoProducts.Add(pro);
             }
 
             return new GetAllProductResponse
             {
-                Products = dtoProducts,
+                ProductVariants = dtoProducts,
                 TotalCount = totalCount,
                 Page = request.Page,
                 PageSize = request.PageSize

@@ -15,10 +15,9 @@ namespace Product.Application.Responses.GetProductById
         public string Code { get; set; }
         public string Description { get; set; }
         public string Slug { get; set; }
+        public decimal Price { get; set; }
         public ProductBrand Brand { get; set; }
         public ProductCategory Category { get; set; }
-
-        public ICollection<ProductVariantMapper> Variants { get; set; }
         public ICollection<ProductImageMapper> Images { get; set; }
 
     }
@@ -45,11 +44,6 @@ namespace Product.Application.Responses.GetProductById
         public string Sku { get; set; }
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
-    }
-
-    public class ProductVariantOptionMapper
-    {
-
     }
 
     public class ProductImageMapper

@@ -45,9 +45,12 @@ export const Cart: React.FC = () => {
             >
               <div className="flex items-center space-x-4">
                 <img
-                  src={item.product.images[0]}
+                  src={item.product.images?.[0]?.imageUrl || item.product.images?.[0]?.url || 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg'}
                   alt={item.product.name}
                   className="w-20 h-20 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg';
+                  }}
                 />
                 
                 <div className="flex-1 min-w-0">
@@ -57,7 +60,7 @@ export const Cart: React.FC = () => {
                   >
                     {item.product.name}
                   </Link>
-                  <p className="text-sm text-gray-500">{item.product.brand}</p>
+                  <p className="text-sm text-gray-500">{item.product.brand?.name || 'Unknown Brand'}</p>
                   
                   {item.selectedSize && (
                     <p className="text-sm text-gray-500">Size: {item.selectedSize}</p>
@@ -87,10 +90,10 @@ export const Cart: React.FC = () => {
 
                 <div className="text-right">
                   <p className="text-lg font-bold text-gray-900">
-                    ${(item.product.price * item.quantity).toFixed(2)}
+                    ${((item.product.price || 0) * item.quantity).toFixed(2)}
                   </p>
                   <p className="text-sm text-gray-500">
-                    ${item.product.price.toFixed(2)} each
+                    ${(item.product.price || 0).toFixed(2)} each
                   </p>
                 </div>
 

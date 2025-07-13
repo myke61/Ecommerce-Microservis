@@ -5,6 +5,8 @@ export interface User {
   lastName: string;
   role: 'customer' | 'admin';
   avatar?: string;
+  phone?: string;
+  address?: string;
 }
 
 export interface Product {
@@ -68,7 +70,7 @@ export interface ProductImage {
 }
 
 export interface ProductListResponse {
-  products: Product[];
+  productVariants: Product[];
   totalCount: number;
   page: number;
   pageSize: number;
@@ -129,4 +131,16 @@ export interface AuthTokens {
   accessToken: string;
   refreshToken: string;
   expiresAt: number;
+}
+
+export interface BasketResponse {
+  basketAmount: number;
+  basketItems: BasketItem[];
+}
+
+export interface BasketItem {
+  productId: string;
+  quantity: number;
+  unitPrice: number;
+  productName: string;
 }
