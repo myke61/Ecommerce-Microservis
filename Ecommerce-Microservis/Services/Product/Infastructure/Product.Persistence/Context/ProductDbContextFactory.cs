@@ -8,7 +8,7 @@ public class ProductDbContextFactory : IDesignTimeDbContextFactory<ProductDbCont
     {
         var optionsBuilder = new DbContextOptionsBuilder<ProductDbContext>();
 
-        var connectionString = "Data Source=DESKTOP-6ND9QO1\\SQLEXPRESS;initial Catalog=ProductDB;integrated Security=true;TrustServerCertificate=True";
+        var connectionString = "Data Source=HPYZSG3\\SQLEXPRESS01;initial Catalog=ProductDB;integrated Security=true;TrustServerCertificate=True";
         optionsBuilder.UseSqlServer(connectionString);
 
         return new ProductDbContext(optionsBuilder.Options);

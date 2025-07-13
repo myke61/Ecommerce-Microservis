@@ -96,6 +96,8 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: false,
             isLoading: false,
           });
+          // Redirect to home page after logout
+          window.location.href = '/';
         } catch (error) {
           console.error('Logout error:', error);
           // Even if logout fails, clear local state
@@ -106,6 +108,8 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: false,
             isLoading: false,
           });
+          // Redirect to home page even if logout fails
+          window.location.href = '/';
         }
       },
 

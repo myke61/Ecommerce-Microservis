@@ -92,8 +92,7 @@ export const Profile: React.FC = () => {
   };
 
   const handleLogout = () => {
-    logout();
-    navigate('/');
+    // Navigation will be handled by authStore
   };
 
   if (!user) {

@@ -47,10 +47,11 @@ namespace Ecommerce.Base.Repositories
 
         public ICommandRepository<T> GetCommandRepository<T>() where T : BaseEntity
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes());
+            return new CommandRepository<T>(_dbContext);
+            /*var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes());
             var type = types.First(x => typeof(CommandRepository<T>).IsAssignableFrom(x)) ?? throw new InvalidOperationException($"No matching type found for {typeof(CommandRepository<T>).Name}");
             var instance = Activator.CreateInstance(type, args: [_dbContext]) as CommandRepository<T>;
-            return instance;
+            return instance;*/
         }
     }
 }

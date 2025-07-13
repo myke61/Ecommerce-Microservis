@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
   const handleLogout = () => {
     logout();
     setIsUserMenuOpen(false);
-    navigate('/');
+    // Navigation will be handled by authStore
   };
 
   return (

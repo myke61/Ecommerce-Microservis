@@ -49,7 +49,7 @@ builder.Services.AddSingleton<IRabbitMQPublisher, RabbitMQPublisher>();
 builder.Services.AddSingleton(
     new EventStoreClient(EventStoreClientSettings.Create(
             "esdb://admin:changeit@localhost:2113?tls=false&tlsVerifyCert=false")));
-builder.Services.AddRedisCache();
+builder.Services.AddRedisCache(builder.Configuration);
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();

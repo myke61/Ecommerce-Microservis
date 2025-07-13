@@ -34,8 +34,8 @@ builder.Services.AddAuthorizationBuilder()
 
 // Add services to the container.
 
-builder.Services.AddRedisCache();
-builder.Services.AddPersistenceServices();
+builder.Services.AddRedisCache(builder.Configuration);
+builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddBaseServices();
 

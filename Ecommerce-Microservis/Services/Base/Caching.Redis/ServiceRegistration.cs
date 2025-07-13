@@ -1,5 +1,6 @@
 ﻿using Caching.Redis.Interface;
 using Caching.Redis.Service;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using System;
@@ -12,9 +13,10 @@ namespace Caching.Redis
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddRedisCache(this IServiceCollection services)
+        public static IServiceCollection AddRedisCache(this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
+            var conn = configuration.GetConnectionString("Redis");
+            services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(conn));
             services.AddScoped<IRedisCache, RedisCacheService>();
             return services;
         }

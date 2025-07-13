@@ -27,7 +27,7 @@ builder.Services.AddAuthorizationBuilder()
         policy.RequireClaim("scope", "orderApi");
     });
 
-builder.Services.AddRedisCache();
+builder.Services.AddRedisCache(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddPersistenceServices();
