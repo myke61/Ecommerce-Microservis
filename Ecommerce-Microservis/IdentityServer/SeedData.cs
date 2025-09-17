@@ -1,4 +1,4 @@
-using System.Security.Claims;
+ï»¿using System.Security.Claims;
 using Duende.IdentityModel;
 using IdentityServer.Data;
 using IdentityServer.Models;
@@ -47,9 +47,10 @@ public class SeedData
                 }
 
                 result = userMgr.AddClaimsAsync(mikail, [
-                            new(JwtClaimTypes.Name, "Mikail Aðýrman"),
+                            new(JwtClaimTypes.Name, "Mikail Agirman"),
+                            new(ClaimTypes.Name,"Mikail Agirman"),
                             new(JwtClaimTypes.GivenName, "Mikail"),
-                            new(JwtClaimTypes.FamilyName, "Aðýrman"),
+                            new(JwtClaimTypes.FamilyName, "Agirman"),
                             new(JwtClaimTypes.Address, "Turkey"),
                             new (JwtClaimTypes.Roles, "Admin"),
                         ]).Result;
@@ -82,6 +83,7 @@ public class SeedData
 
                 result = userMgr.AddClaimsAsync(bob, [
                             new(JwtClaimTypes.Name, "Bob Smith"),
+                            new(ClaimTypes.Name,"Bob Smith"),
                             new(JwtClaimTypes.GivenName, "Bob"),
                             new(JwtClaimTypes.FamilyName, "Smith"),
                             new("location", "Russia"),

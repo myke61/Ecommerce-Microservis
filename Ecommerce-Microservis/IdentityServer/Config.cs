@@ -1,7 +1,5 @@
 using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
-using Duende.IdentityServer.Test;
-using System.Security.Claims;
 
 namespace IdentityServer;
 
@@ -34,13 +32,14 @@ public static class Config
         {
             Scopes = { "orderApi" },
             UserClaims = { "role" } // role claim'ini access token'a yansýtmak için bu þart
-        }
+        },
     ];
     public static IEnumerable<ApiScope> ApiScopes =>
         [
             new ApiScope("productApi","Product API",["role"]),
             new ApiScope("basketApi","Basket API",["role"]),
             new ApiScope("orderApi","Order API",["role"]),
+            new ApiScope("chatBot","Chat Bot",["role"])
         ];
 
 
@@ -115,6 +114,35 @@ public static class Config
                     "productApi",
                     "basketApi",
                     "orderApi",
+                    "chatBot",
+                    "roles"
+                },
+                AllowAccessTokensViaBrowser =true,
+                EnableLocalLogin = true,
+            },
+            new() {
+                ClientId = "AdminWeb",
+                ClientName = "AdminWeb",
+                Enabled = true,
+                ClientSecrets = {new Secret("AdminWeb".Sha256())},
+
+                AllowedGrantTypes = GrantTypes.Code,
+                RequirePkce = false,
+                RequireClientSecret = false, // SPA'lerde client secret saklanmaz
+
+                RedirectUris = { "http://localhost:5174/auth/callback" },
+                AllowedCorsOrigins = { "http://localhost:5174" },
+                PostLogoutRedirectUris = { "http://localhost:5174/" },
+                AllowedScopes = new List<string>
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.OfflineAccess,
+                    IdentityServerConstants.StandardScopes.Email,
+                    "productApi",
+                    "basketApi",
+                    "orderApi",
+                    "chatBot",
                     "roles"
                 },
                 AllowAccessTokensViaBrowser =true,

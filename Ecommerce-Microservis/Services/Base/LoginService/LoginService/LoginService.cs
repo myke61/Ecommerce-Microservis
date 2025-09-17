@@ -1,6 +1,7 @@
-﻿using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
-namespace Basket.API.Services.LoginService
+namespace LoginService.LoginService
 {
     public class LoginService : ILoginService
     {
@@ -11,5 +12,7 @@ namespace Basket.API.Services.LoginService
         }
 
         public Guid UserId => new(httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value.ToString());
+
+        public string UserName => httpContextAccessor.HttpContext?.User.FindFirst("name")?.Value;
     }
 }

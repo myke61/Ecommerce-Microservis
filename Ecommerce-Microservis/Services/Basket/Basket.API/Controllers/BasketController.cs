@@ -4,11 +4,11 @@ using Basket.API.DTOs.Product;
 using Basket.API.DTOs.Requests;
 using Basket.API.Entities;
 using Basket.API.Outbox;
-using Basket.API.Services.LoginService;
 using Basket.API.Services.PaymentService;
 using Basket.API.Services.ProductService;
 using Caching.Redis.Interface;
 using EventStore.Interface;
+using LoginService.LoginService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

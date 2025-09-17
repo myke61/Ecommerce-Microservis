@@ -82,6 +82,23 @@
         "PeriodTimespan": 10,
         "Limit": 4
       }
+    },
+    //ChatBot Service
+    {
+      "UpstreamPathTemplate": "/chathub/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamPathTemplate": "/chathub/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7118
+        }
+      ],
+      "UseWebSockets": true,
+      "HttpHandlerOptions": {
+        "DangerousAcceptAnyServerCertificateValidator": true
+      }
     }
   ]
 }

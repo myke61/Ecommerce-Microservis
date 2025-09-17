@@ -3,14 +3,13 @@ using Basket.API.Outbox;
 using Basket.API.RabbitMQ;
 using Basket.API.RabbitMQ.Publisher;
 using Basket.API.RabbitMQ.Publisher.Interface;
-using Basket.API.Services.LoginService;
 using Basket.API.Services.PaymentService;
 using Basket.API.Services.ProductService;
 using Caching.Redis;
-using Ecommerce.Base;
 using EventStore;
 using EventStore.Client;
 using Logging;
+using LoginService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,9 +49,9 @@ builder.Services.AddSingleton(
     new EventStoreClient(EventStoreClientSettings.Create(
             "esdb://admin:changeit@localhost:2113?tls=false&tlsVerifyCert=false")));
 builder.Services.AddRedisCache(builder.Configuration);
-
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddLoginService();
+
 builder.Services.AddEventStore();
 builder.Services.AddHostedService<OutboxWorker>(provider =>
 {

@@ -30,6 +30,7 @@
     <ProjectReference Include="..\..\Base\Ecommerce.Base\Ecommerce.Base.csproj" />
     <ProjectReference Include="..\..\Base\EventStore\EventStore.csproj" />
     <ProjectReference Include="..\..\Base\Logging\Logging.csproj" />
+    <ProjectReference Include="..\..\Base\LoginService\LoginService.csproj" />
   </ItemGroup>
 
 </Project>
